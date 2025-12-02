@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import inquirer from "inquirer";
+import { select } from "@inquirer/prompts";
 import { execSync } from "child_process";
 
 const choices = [
@@ -8,24 +8,18 @@ const choices = [
   { name: "Docs - 文档站 (@fluxui/docs)", value: "docs" },
 ];
 
-const run = () => {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "target",
-        message: "请选择要运行的模块：",
-        choices,
-      },
-    ])
-    .then((answers) => {
-      const scriptName = `dev:${answers.target}`;
-      execSync(`pnpm ${scriptName}`, { stdio: "inherit" });
-    })
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
+const run = async () => {
+  try {
+    const target = await select({
+      message: "请选择要运行的模块：",
+      choices,
     });
+    const scriptName = `dev:${target}`;
+    execSync(`pnpm ${scriptName}`, { stdio: "inherit" });
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 };
 
 run();

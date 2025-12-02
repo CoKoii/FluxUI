@@ -1,0 +1,6 @@
+{
+  "name": "@fluxui/playground",
+  "scripts": {
+    "dev": "vite"
+  }
+}

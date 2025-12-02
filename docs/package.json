@@ -1,0 +1,6 @@
+{
+  "name": "@fluxui/docs",
+  "scripts": {
+    "dev": "vitepress dev"
+  }
+}
