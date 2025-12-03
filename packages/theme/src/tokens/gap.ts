@@ -1,4 +1,4 @@
-import { GapTokens } from "../types";
+import type { GapTokens } from "../types";
 
 export const gap: GapTokens = {
   4: "4px",
