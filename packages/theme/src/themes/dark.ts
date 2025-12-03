@@ -1,15 +1,17 @@
 import type { Theme } from "../types";
 import { radius } from "../tokens/radius";
-import { spacing } from "../tokens/spacing";
+import { padding } from "../tokens/padding";
 import { shadows } from "../tokens/shadows";
 import { darkColors } from "../tokens/colors-dark";
+import { gap } from "../tokens/gap";
 
 export const darkTheme: Theme = {
   name: "dark",
   tokens: {
     colors: { ...darkColors },
     radius,
-    spacing,
+    padding,
     shadows,
+    gap,
   },
 };

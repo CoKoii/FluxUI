@@ -1,5 +1,5 @@
 export * from "./colors";
 export * from "./colors-dark";
 export * from "./radius";
-export * from "./spacing";
+export * from "./padding";
 export * from "./shadows";

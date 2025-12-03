@@ -1,15 +1,16 @@
 import type { Theme } from "../types";
 import { baseColors } from "../tokens/colors";
 import { radius } from "../tokens/radius";
-import { spacing } from "../tokens/spacing";
+import { padding } from "../tokens/padding";
 import { shadows } from "../tokens/shadows";
-
+import { gap } from "../tokens/gap";
 export const lightTheme: Theme = {
   name: "light",
   tokens: {
     colors: { ...baseColors },
     radius,
-    spacing,
+    padding,
     shadows,
+    gap,
   },
 };

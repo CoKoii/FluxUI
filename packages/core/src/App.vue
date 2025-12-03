@@ -48,11 +48,10 @@ defineOptions({
 .main {
   padding: 16px 24px;
   background-color: var(--fl-colors-layout-background);
-  width: 100vw;
-  height: 100vh;
   transition: background-color 0.3s;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   gap: 16px;
 }
 </style>

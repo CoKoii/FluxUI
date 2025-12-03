@@ -1,25 +1,29 @@
 .Alert {
   width: 100%;
-  padding: 16px 16px;
+  padding: var(--fl-padding-812);
   display: flex;
   align-items: center;
-  gap: 16px;
-  border-radius: 16px;
+  gap: var(--fl-gap-16);
+  border-radius: var(--fl-radius-14);
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
   user-select: none;
   .icon {
-    border-radius: 50%;
+    border-radius: var(--fl-radius-9999);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px;
+    padding: var(--fl-padding-8);
     transition: background-color 0.3s ease;
   }
   .text {
+    max-width: 100%;
     font-size: 14px;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 .alert_default {

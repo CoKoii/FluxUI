@@ -60,18 +60,15 @@ export interface ColorTokens {
 }
 
 export interface RadiusTokens {
-  small?: string;
-  medium?: string;
-  large?: string;
+  [key: string]: string;
 }
 
-export interface SpacingTokens {
-  xs?: string;
-  sm?: string;
-  md?: string;
-  lg?: string;
+export interface PaddingTokens {
+  [key: string]: string;
 }
-
+export interface GapTokens {
+  [key: string]: string;
+}
 export interface ShadowTokens {
   sm?: string;
   md?: string;
@@ -80,8 +77,9 @@ export interface ShadowTokens {
 export interface ThemeTokens {
   colors?: ColorTokens;
   radius?: RadiusTokens;
-  spacing?: SpacingTokens;
+  padding?: PaddingTokens;
   shadows?: ShadowTokens;
+  gap?: GapTokens;
 }
 
 export interface Theme {
