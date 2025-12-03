@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { AlertProps } from './types'
+
+defineProps<AlertProps>()
 defineOptions({
   name: 'FLAlert',
 })
