@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Moon, Sun } from 'lucide-vue-next'
+import { Moon, MoonStar, Sun } from 'lucide-vue-next'
 import { darkTheme, lightTheme } from '../../theme/src'
 import ConfigProvider from './components/ConfigProvider/ConfigProvider.vue'
 import { ref } from 'vue'
@@ -20,12 +20,17 @@ defineOptions({
       <Moon @click="changeTheme" v-else />
     </div>
     <div class="main">
-      <Alert color="default"></Alert>
-      <Alert color="primary"></Alert>
-      <Alert color="secondary"></Alert>
-      <Alert color="success"></Alert>
-      <Alert color="warning"></Alert>
-      <Alert color="danger"></Alert>
+      <Alert color="default">
+        <template #icon>
+          <MoonStar fill="currentColor" :size="22" />
+        </template>
+        This is a default alert</Alert
+      >
+      <Alert color="primary">This is a primary alert</Alert>
+      <Alert color="secondary">This is a secondary alert</Alert>
+      <Alert color="success">This is a success alert</Alert>
+      <Alert color="warning">This is a warning alert</Alert>
+      <Alert color="danger">This is a danger alert</Alert>
     </div>
   </ConfigProvider>
 </template>

@@ -18,7 +18,7 @@ defineOptions({
       </slot>
     </div>
     <div class="text">
-      <slot><h5>This is an alert</h5> </slot>
+      <slot></slot>
     </div>
   </div>
 </template>

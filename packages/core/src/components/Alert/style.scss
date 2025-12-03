@@ -18,7 +18,8 @@
     transition: background-color 0.3s ease;
   }
   .text {
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 600;
   }
 }
 .alert_default {
@@ -36,7 +37,7 @@
   }
 }
 .alert_secondary {
-  color: var(--fl-colors-purple-500);
+  color: var(--fl-colors-purple-400);
   background-color: var(--fl-colors-secondary-50);
   .icon {
     background-color: var(--fl-colors-secondary-100);
