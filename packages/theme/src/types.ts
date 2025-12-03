@@ -1,3 +1,5 @@
+export type ThemeMode = "light" | "dark";
+
 export interface ColorScale {
   50: string;
   100: string;
@@ -25,7 +27,7 @@ export interface ContentColors {
   content4: string;
 }
 
-export interface BaseSemanticColors {
+export interface SemanticColors {
   default: string;
   primary: string;
   secondary: string;
@@ -35,54 +37,60 @@ export interface BaseSemanticColors {
 }
 
 export interface ColorTokens {
-  white: string;
-  black: string;
-  blue: ColorScale;
-  purple: ColorScale;
-  green: ColorScale;
-  red: ColorScale;
-  pink: ColorScale;
-  yellow: ColorScale;
-  cyan: ColorScale;
-  zinc: ColorScale;
-  layout: LayoutColors;
-  content: ContentColors;
-  base: BaseSemanticColors;
-  default: ColorScale;
-  primary: ColorScale;
-  secondary: ColorScale;
-  success: ColorScale;
-  warning: ColorScale;
-  danger: ColorScale;
+  white?: string;
+  black?: string;
+  blue?: ColorScale;
+  purple?: ColorScale;
+  green?: ColorScale;
+  red?: ColorScale;
+  pink?: ColorScale;
+  yellow?: ColorScale;
+  cyan?: ColorScale;
+  zinc?: ColorScale;
+  layout?: LayoutColors;
+  content?: ContentColors;
+  semantic?: SemanticColors;
+  default?: ColorScale;
+  primary?: ColorScale;
+  secondary?: ColorScale;
+  success?: ColorScale;
+  warning?: ColorScale;
+  danger?: ColorScale;
+  [key: string]: unknown;
 }
 
 export interface RadiusTokens {
-  sm: string;
-  md: string;
-  lg: string;
-  full: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  full?: string;
 }
 
 export interface SpacingTokens {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
 }
 
 export interface ShadowTokens {
-  sm: string;
-  md: string;
+  sm?: string;
+  md?: string;
 }
 
-export interface FluxTokens {
-  colors: ColorTokens;
-  radius: RadiusTokens;
-  spacing: SpacingTokens;
-  shadows: ShadowTokens;
+export interface ThemeTokens {
+  colors?: ColorTokens;
+  radius?: RadiusTokens;
+  spacing?: SpacingTokens;
+  shadows?: ShadowTokens;
 }
 
-export interface FluxTheme {
+export interface Theme {
   name: string;
-  tokens: FluxTokens;
+  tokens: ThemeTokens;
+}
+
+export interface ApplyThemeOptions {
+  prefix?: string;
+  attribute?: string;
 }

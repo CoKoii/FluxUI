@@ -1,15 +1,13 @@
-import type { FluxTheme } from "../types.ts";
-import { baseColors } from "../tokens/colors.ts";
-import { radius } from "../tokens/radius.ts";
-import { spacing } from "../tokens/spacing.ts";
-import { shadows } from "../tokens/shadows.ts";
+import type { Theme } from "../types";
+import { baseColors } from "../tokens/colors";
+import { radius } from "../tokens/radius";
+import { spacing } from "../tokens/spacing";
+import { shadows } from "../tokens/shadows";
 
-export const lightTheme: FluxTheme = {
+export const lightTheme: Theme = {
   name: "light",
   tokens: {
-    colors: {
-      ...baseColors,
-    },
+    colors: { ...baseColors },
     radius,
     spacing,
     shadows,
