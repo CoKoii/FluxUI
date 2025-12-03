@@ -60,10 +60,9 @@ export interface ColorTokens {
 }
 
 export interface RadiusTokens {
-  sm?: string;
-  md?: string;
-  lg?: string;
-  full?: string;
+  small?: string;
+  medium?: string;
+  large?: string;
 }
 
 export interface SpacingTokens {
