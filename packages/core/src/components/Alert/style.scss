@@ -1,0 +1,65 @@
+.Alert {
+  width: 100%;
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  user-select: none;
+  .icon {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: background-color 0.3s ease;
+  }
+  .text {
+    font-size: 18px;
+  }
+}
+.alert_default {
+  color: var(--fl-colors-default-900);
+  background-color: var(--fl-colors-default-100);
+  .icon {
+    background-color: var(--fl-colors-default-200);
+  }
+}
+.alert_primary {
+  color: var(--fl-colors-blue-500);
+  background-color: var(--fl-colors-primary-50);
+  .icon {
+    background-color: var(--fl-colors-primary-100);
+  }
+}
+.alert_secondary {
+  color: var(--fl-colors-purple-500);
+  background-color: var(--fl-colors-secondary-50);
+  .icon {
+    background-color: var(--fl-colors-secondary-100);
+  }
+}
+.alert_success {
+  color: var(--fl-colors-green-600);
+  background-color: var(--fl-colors-success-50);
+  .icon {
+    background-color: var(--fl-colors-success-100);
+  }
+}
+.alert_warning {
+  color: var(--fl-colors-yellow-600);
+  background-color: var(--fl-colors-warning-50);
+  .icon {
+    background-color: var(--fl-colors-warning-100);
+  }
+}
+.alert_danger {
+  color: var(--fl-colors-red-600);
+  background-color: var(--fl-colors-danger-50);
+  .icon {
+    background-color: var(--fl-colors-danger-100);
+  }
+}

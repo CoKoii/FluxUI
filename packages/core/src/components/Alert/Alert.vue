@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { Bell } from 'lucide-vue-next'
 import type { AlertProps } from './types'
 
-defineProps<AlertProps>()
+const props = withDefaults(defineProps<AlertProps>(), {
+  color: 'default',
+})
 defineOptions({
   name: 'FLAlert',
 })
 </script>
 
 <template>
-  <div class="Alert"></div>
+  <div class="Alert" :class="{ ['alert_' + props.color]: props.color }">
+    <div class="icon">
+      <slot name="icon">
+        <Bell fill="currentColor" :size="22" />
+      </slot>
+    </div>
+    <div class="text">
+      <slot><h5>This is an alert</h5> </slot>
+    </div>
+  </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use './style.scss';
+</style>

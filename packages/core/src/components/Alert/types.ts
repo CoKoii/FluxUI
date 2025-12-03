@@ -1,4 +1,3 @@
 export interface AlertProps {
-  type?: 'success' | 'info' | 'warning' | 'error'
-  radius?: string
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 }
