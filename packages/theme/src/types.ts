@@ -72,6 +72,9 @@ export interface GapTokens {
 export interface FontTokens {
   [key: string]: string | number;
 }
+export interface MotionTokens {
+  [key: string]: { [key: string]: string };
+}
 export interface ShadowTokens {
   sm?: string;
   md?: string;
@@ -84,6 +87,7 @@ export interface ThemeTokens {
   shadows?: ShadowTokens;
   gap?: GapTokens;
   font?: FontTokens;
+  motion?: MotionTokens;
 }
 
 export interface Theme {

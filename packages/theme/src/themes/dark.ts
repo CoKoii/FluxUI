@@ -5,6 +5,7 @@ import { shadows } from "../tokens/shadows";
 import { darkColors } from "../tokens/colors-dark";
 import { gap } from "../tokens/gap";
 import { font } from "../tokens/font";
+import { motion } from "../tokens/motion";
 
 export const darkTheme: Theme = {
   name: "dark",
@@ -15,5 +16,6 @@ export const darkTheme: Theme = {
     shadows,
     gap,
     font,
+    motion,
   },
 };

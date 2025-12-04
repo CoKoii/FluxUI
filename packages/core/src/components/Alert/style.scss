@@ -6,8 +6,8 @@
   gap: var(--fl-gap-16);
   border-radius: var(--fl-radius-14);
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color var(--fl-motion-transition-300ease),
+    color var(--fl-motion-transition-300ease);
   user-select: none;
   .icon {
     border-radius: var(--fl-radius-9999);
@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--fl-padding-8);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--fl-motion-transition-300ease);
   }
   .text {
     max-width: 100%;
@@ -24,7 +24,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition: color 0.3s ease;
+    transition: color var(--fl-motion-transition-300ease);
   }
 }
 .alert_default {
