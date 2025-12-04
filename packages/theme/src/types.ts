@@ -69,6 +69,9 @@ export interface PaddingTokens {
 export interface GapTokens {
   [key: string]: string;
 }
+export interface FontTokens {
+  [key: string]: string | number;
+}
 export interface ShadowTokens {
   sm?: string;
   md?: string;
@@ -80,6 +83,7 @@ export interface ThemeTokens {
   padding?: PaddingTokens;
   shadows?: ShadowTokens;
   gap?: GapTokens;
+  font?: FontTokens;
 }
 
 export interface Theme {

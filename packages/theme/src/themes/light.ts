@@ -4,6 +4,8 @@ import { radius } from "../tokens/radius";
 import { padding } from "../tokens/padding";
 import { shadows } from "../tokens/shadows";
 import { gap } from "../tokens/gap";
+import { font } from "../tokens/font";
+
 export const lightTheme: Theme = {
   name: "light",
   tokens: {
@@ -12,5 +14,6 @@ export const lightTheme: Theme = {
     padding,
     shadows,
     gap,
+    font,
   },
 };

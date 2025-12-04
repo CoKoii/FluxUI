@@ -3,7 +3,10 @@
 *::after {
   box-sizing: border-box;
 }
-
+[fl-data-theme] {
+  font-family: var(--fl-font-family);
+  font-weight: var(--fl-font-weight400);
+}
 body,
 h1,
 h2,

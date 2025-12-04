@@ -1,0 +1,31 @@
+import type { FontTokens } from "../types";
+
+export const font: FontTokens = {
+  family: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    '"Segoe UI"',
+    "Roboto",
+    '"Helvetica Neue"',
+    "Arial",
+    '"Noto Sans"',
+    '"PingFang SC"',
+    '"Microsoft YaHei"',
+    "sans-serif",
+  ].join(", "),
+  weight100: 100,
+  weight200: 200,
+  weight300: 300,
+  weight400: 400,
+  weight500: 500,
+  weight600: 600,
+  weight700: 700,
+  weight800: 800,
+  weight900: 900,
+  size12: "12px",
+  size13: "13px",
+  size14: "14px",
+  size16: "16px",
+  size20: "20px",
+};

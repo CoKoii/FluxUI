@@ -19,11 +19,12 @@
   }
   .text {
     max-width: 100%;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: var(--fl-font-size14);
+    font-weight: var(--fl-font-weight600);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    transition: color 0.3s ease;
   }
 }
 .alert_default {

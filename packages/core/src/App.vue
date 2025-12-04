@@ -43,12 +43,12 @@ defineOptions({
   cursor: pointer;
   z-index: 1000;
   color: var(--fl-colors-default-900);
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 .main {
   padding: 16px 24px;
   background-color: var(--fl-colors-layout-background);
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: start;

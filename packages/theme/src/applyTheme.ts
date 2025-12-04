@@ -1,7 +1,7 @@
 import type { Theme, ThemeMode, ApplyThemeOptions } from "./types";
 
 export const DEFAULT_PREFIX = "--fl";
-export const DEFAULT_ATTRIBUTE = "data-theme";
+export const DEFAULT_ATTRIBUTE = "fl-data-theme";
 
 const toKebabCase = (str: string) =>
   str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();

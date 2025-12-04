@@ -4,6 +4,7 @@ import { padding } from "../tokens/padding";
 import { shadows } from "../tokens/shadows";
 import { darkColors } from "../tokens/colors-dark";
 import { gap } from "../tokens/gap";
+import { font } from "../tokens/font";
 
 export const darkTheme: Theme = {
   name: "dark",
@@ -13,5 +14,6 @@ export const darkTheme: Theme = {
     padding,
     shadows,
     gap,
+    font,
   },
 };
