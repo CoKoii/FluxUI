@@ -5,6 +5,8 @@ import type { AlertProps } from './types'
 const props = withDefaults(defineProps<AlertProps>(), {
   color: 'default',
   variant: 'flat',
+  radius: 'md',
+  hiddenIcon: false,
 })
 defineOptions({
   name: 'FLAlert',
@@ -16,6 +18,8 @@ defineOptions({
     class="Alert"
     :class="{
       ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
+      ['alert_radius_' + props.radius]: props.radius,
+      ['alert_icon_hidden']: props.hiddenIcon,
     }"
   >
     <div class="icon">

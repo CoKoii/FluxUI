@@ -55,6 +55,13 @@ defineOptions({
       <Alert color="danger" variant="bordered">Danger Bordered Alert</Alert>
       <Alert color="danger" variant="flat">Danger Flat Alert</Alert>
       <Alert color="danger" variant="faded">Danger Faded Alert</Alert>
+      <!-- radius -->
+      <Alert radius="none">No Radius Alert</Alert>
+      <Alert radius="sm">Small Radius Alert</Alert>
+      <Alert radius="md">Medium Radius Alert</Alert>
+      <Alert radius="lg">Large Radius Alert</Alert>
+      <Alert radius="full">Extra Large Radius Alert</Alert>
+      <Alert radius="md" hiddenIcon>Extra Large Radius Alert</Alert>
     </div>
   </ConfigProvider>
 </template>

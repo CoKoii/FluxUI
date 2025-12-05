@@ -1,5 +1,6 @@
 .Alert {
   width: 100%;
+  min-height: 64px;
   padding: var(--fl-padding-812);
   display: flex;
   align-items: center;
@@ -215,5 +216,26 @@
   border: 1px solid var(--fl-colors-danger-200);
   .icon {
     background-color: var(--fl-colors-danger-100);
+  }
+}
+.alert_radius_none {
+  border-radius: 0;
+}
+.alert_radius_sm {
+  border-radius: var(--fl-radius-6);
+}
+.alert_radius_md {
+  border-radius: var(--fl-radius-10);
+}
+.alert_radius_lg {
+  border-radius: var(--fl-radius-14);
+}
+.alert_radius_full {
+  border-radius: var(--fl-radius-9999);
+}
+.alert_icon_hidden {
+  padding: var(--fl-padding-024);
+  .icon {
+    display: none;
   }
 }
