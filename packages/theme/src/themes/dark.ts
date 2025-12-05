@@ -6,6 +6,7 @@ import { darkColors } from "../tokens/colors-dark";
 import { gap } from "../tokens/gap";
 import { font } from "../tokens/font";
 import { motion } from "../tokens/motion";
+import { border } from "../tokens/border";
 
 export const darkTheme: Theme = {
   name: "dark",
@@ -17,5 +18,6 @@ export const darkTheme: Theme = {
     gap,
     font,
     motion,
+    border,
   },
 };

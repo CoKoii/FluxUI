@@ -1,4 +1,4 @@
-import { MotionTokens } from "../types";
+import type { MotionTokens } from "../types";
 
 export const motion: MotionTokens = {
   transition: {

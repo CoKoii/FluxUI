@@ -6,6 +6,7 @@ import { shadows } from "../tokens/shadows";
 import { gap } from "../tokens/gap";
 import { font } from "../tokens/font";
 import { motion } from "../tokens/motion";
+import { border } from "../tokens/border";
 
 export const lightTheme: Theme = {
   name: "light",
@@ -17,5 +18,6 @@ export const lightTheme: Theme = {
     gap,
     font,
     motion,
+    border,
   },
 };
