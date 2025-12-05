@@ -4,6 +4,7 @@ import type { AlertProps } from './types'
 
 const props = withDefaults(defineProps<AlertProps>(), {
   color: 'default',
+  variant: 'flat',
 })
 defineOptions({
   name: 'FLAlert',
@@ -11,7 +12,12 @@ defineOptions({
 </script>
 
 <template>
-  <div class="Alert" :class="{ ['alert_' + props.color]: props.color }">
+  <div
+    class="Alert"
+    :class="{
+      ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
+    }"
+  >
     <div class="icon">
       <slot name="icon">
         <Bell fill="currentColor" :size="22" />
