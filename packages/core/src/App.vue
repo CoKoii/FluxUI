@@ -62,6 +62,13 @@ defineOptions({
       <Alert radius="lg">Large Radius Alert</Alert>
       <Alert radius="full">Extra Large Radius Alert</Alert>
       <Alert radius="md" hiddenIcon>Extra Large Radius Alert</Alert>
+      <Alert radius="md" hiddenIcon>
+        <h1>666</h1>
+        <h1>666</h1>
+        <h1>666</h1>
+        <h1>666</h1>
+        <h1>666</h1>
+      </Alert>
     </div>
   </ConfigProvider>
 </template>

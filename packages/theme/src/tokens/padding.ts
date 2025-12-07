@@ -5,6 +5,7 @@ export const padding: PaddingTokens = {
   8: "8px",
   8_12: "8px 12px",
   12_16: "12px 16px",
+  140: "14px 0",
   16: "16px",
   16_24: "16px 24px",
   ["024"]: "0 24px",
