@@ -22,10 +22,10 @@ defineOptions({
     </div>
     <div class="main">
       <!-- Alert 组件示例 -->
-      <Flux_Alert v-if="false" />
+      <Flux_Alert v-if="true" />
 
       <!-- Button 组件示例 -->
-      <Flux_Button v-if="true" />
+      <Flux_Button v-if="false" />
     </div>
   </ConfigProvider>
 </template>
