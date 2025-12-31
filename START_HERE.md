@@ -2,24 +2,63 @@
 
 ## 两个核心命令
 
-### 1. 创建组件
+### 创建新组件
+
 ```bash
 pnpm new
 ```
-输入组件名称，自动生成所有必要文件。
 
-### 2. 发布
+**交互式流程：**
+1. 输入组件名称 (如：Card)
+2. 自动生成所有文件：
+   - `Card.vue` - Vue 组件
+   - `types.ts` - TypeScript 类型
+   - `style.scss` - 样式文件
+   - `index.ts` - 组件导出
+3. 自动更新 `components/index.ts` 和 `src/index.ts`
+
+### 发布版本
+
 ```bash
 pnpm release
 ```
-一键发布到 npm（自动处理构建、版本更新、Git 提交等）。
 
-## 开发流程
+**完全自动化的发布流程：**
+1. 验证 npm 登录状态
+2. 检查工作区是否干净
+3. 选择版本类型：🐛 Patch、✨ Minor 或 💥 Major
+4. 自动更新所有 package.json 版本
+5. 清理旧产物、构建所有包
+6. 发布到 npm 注册表
+7. 创建 Git 标签和提交
+8. 推送到远程仓库
+
+## 基本开发流程
+
 ```bash
-pnpm new             # 创建组件
-pnpm dev:core        # 开发调试
-pnpm release         # 发布
+# 1. 创建新组件
+pnpm new
+
+# 2. 本地开发调试
+pnpm dev:core
+
+# 3. 测试构建
+pnpm build
+
+# 4. 发布版本
+pnpm release
 ```
 
-详细说明见 [AUTOMATION_GUIDE.md](AUTOMATION_GUIDE.md)
+## 常用命令
 
+```bash
+pnpm install          # 安装依赖
+pnpm dev              # 启动开发服务器
+pnpm dev:core         # 开发 @fluxui/core 包
+pnpm build            # 构建所有包
+pnpm clean:dist       # 清理构建产物
+pnpm new              # 创建新组件（交互式）
+pnpm release          # 发布版本（完全自动化）
+```
+
+更详细的说明见 [README.md](README.md) 和 [AUTOMATION_GUIDE.md](AUTOMATION_GUIDE.md)
