@@ -82,12 +82,12 @@ $ pnpm release
   💥 Major - 破坏性变更 (0.1.0 -> 1.0.0)
 
 当前版本:
-  @fluxui/theme: 0.1.0
-  @fluxui/core:  0.1.0
+  @fluxuijs/theme: 0.1.0
+  @fluxuijs/core:  0.1.0
 
 新版本:
-  @fluxui/theme: 0.1.1
-  @fluxui/core:  0.1.1
+  @fluxuijs/theme: 0.1.1
+  @fluxuijs/core:  0.1.1
 
 ? 确认发布？ Yes
 
@@ -95,10 +95,10 @@ $ pnpm release
 🚀 构建所有包...
 🚀 验证构建产物...
 ✅ 构建产物验证通过
-🚀 发布 @fluxui/theme...
-✅ @fluxui/theme 发布成功
-🚀 发布 @fluxui/core...
-✅ @fluxui/core 发布成功
+🚀 发布 @fluxuijs/theme...
+✅ @fluxuijs/theme 发布成功
+🚀 发布 @fluxuijs/core...
+✅ @fluxuijs/core 发布成功
 🚀 提交版本变更...
 ✅ 创建标签: v0.1.1
 

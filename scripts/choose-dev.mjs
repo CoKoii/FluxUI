@@ -3,9 +3,9 @@ import { select } from "@inquirer/prompts";
 import { execSync } from "child_process";
 
 const choices = [
-  { name: "Core - 组件库 (@fluxui/core)", value: "core" },
-  { name: "Playground - 本地调试 (@fluxui/playground)", value: "playground" },
-  { name: "Docs - 文档站 (@fluxui/docs)", value: "docs" },
+  { name: "Core - 组件库 (@fluxuijs/core)", value: "core" },
+  { name: "Playground - 本地调试 (@fluxuijs/playground)", value: "playground" },
+  { name: "Docs - 文档站 (@fluxuijs/docs)", value: "docs" },
 ];
 
 const run = async () => {

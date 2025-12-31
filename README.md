@@ -38,15 +38,15 @@ pnpm release
 ### 安装包
 
 ```bash
-pnpm add @fluxui/core
+pnpm add @fluxuijs/core
 ```
 
 ### 全局注册
 
 ```typescript
 import { createApp } from 'vue'
-import FluxUI from '@fluxui/core'
-import '@fluxui/core/dist/style.css'
+import FluxUI from '@fluxuijs/core'
+import '@fluxuijs/core/dist/style.css'
 
 createApp(App)
   .use(FluxUI)
@@ -57,8 +57,8 @@ createApp(App)
 
 ```vue
 <script setup lang="ts">
-import { Button, Alert } from '@fluxui/core'
-import '@fluxui/core/dist/style.css'
+import { Button, Alert } from '@fluxuijs/core'
+import '@fluxuijs/core/dist/style.css'
 </script>
 
 <template>
