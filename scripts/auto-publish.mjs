@@ -186,35 +186,41 @@ async function main() {
     }
   }
   
-  // 3. 选择版本类型
+  // 3. 获取当前版本（在选择前）
+  const currentThemeVersion = getCurrentVersion('theme')
+  const currentCoreVersion = getCurrentVersion('core')
+  
+  console.log(`${colors.cyan}当前版本:${colors.reset}`)
+  console.log(`  @fluxui/theme: ${currentThemeVersion}`)
+  console.log(`  @fluxui/core:  ${currentCoreVersion}\n`)
+  
+  // 计算预期的新版本
+  const [major, minor, patch] = currentCoreVersion.split('.').map(Number)
+  const patchVersion = `${major}.${minor}.${patch + 1}`
+  const minorVersion = `${major}.${minor + 1}.0`
+  const majorVersion = `${major + 1}.0.0`
+  
+  // 4. 选择版本类型
   const versionType = await select({
     message: '请选择版本类型:',
     choices: [
       {
-        name: '🐛 Patch - 修复 Bug (0.1.0 -> 0.1.1)',
+        name: `🐛 Patch - 修复 Bug (${currentCoreVersion} -> ${patchVersion})`,
         value: 'patch',
         description: '向下兼容的问题修正',
       },
       {
-        name: '✨ Minor - 新功能 (0.1.0 -> 0.2.0)',
+        name: `✨ Minor - 新功能 (${currentCoreVersion} -> ${minorVersion})`,
         value: 'minor',
         description: '向下兼容的功能性新增',
       },
       {
-        name: '💥 Major - 破坏性变更 (0.1.0 -> 1.0.0)',
+        name: `💥 Major - 破坏性变更 (${currentCoreVersion} -> ${majorVersion})`,
         value: 'major',
         description: '不兼容的 API 变更',
       },
     ],
   })
-  
-  // 4. 显示当前版本
-  const currentThemeVersion = getCurrentVersion('theme')
-  const currentCoreVersion = getCurrentVersion('core')
-  
-  console.log(`\n当前版本:`)
-  console.log(`  @fluxui/theme: ${currentThemeVersion}`)
-  console.log(`  @fluxui/core:  ${currentCoreVersion}`)
   
   // 5. 更新版本号
   log.step('更新版本号...')
