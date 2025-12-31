@@ -153,8 +153,18 @@ function validateBuild() {
 // 发布包
 function publishPackage(packageName) {
   log.step(`发布 @fluxui/${packageName}...`)
-  exec(`pnpm --filter @fluxui/${packageName} publish --access public --no-git-checks`)
-  log.success(`@fluxui/${packageName} 发布成功`)
+  try {
+    exec(`pnpm --filter @fluxui/${packageName} publish --access public --no-git-checks`)
+    log.success(`@fluxui/${packageName} 发布成功`)
+  } catch (error) {
+    // 如果错误包含 2FA，让用户手动处理
+    if (error.message && error.message.includes('Two-factor')) {
+      log.warn('需要两步验证，请在 npm CLI 中运行以下命令手动发布:')
+      console.log(`\n  pnpm --filter @fluxui/${packageName} publish --access public\n`)
+      throw error
+    }
+    throw error
+  }
 }
 
 // 提交 Git
