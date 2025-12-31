@@ -152,15 +152,16 @@ function validateBuild() {
 
 // 发布包
 function publishPackage(packageName) {
-  log.step(`发布 @fluxui/${packageName}...`)
+  log.step(`发布 @fluxuijs/${packageName}...`)
   try {
-    exec(`pnpm --filter @fluxui/${packageName} publish --access public --no-git-checks`)
-    log.success(`@fluxui/${packageName} 发布成功`)
+    const packagePath = join(projectRoot, `packages/${packageName}`)
+    exec(`npm publish --access public`, { cwd: packagePath })
+    log.success(`@fluxuijs/${packageName} 发布成功`)
   } catch (error) {
     // 如果错误包含 2FA，让用户手动处理
     if (error.message && error.message.includes('Two-factor')) {
       log.warn('需要两步验证，请在 npm CLI 中运行以下命令手动发布:')
-      console.log(`\n  pnpm --filter @fluxui/${packageName} publish --access public\n`)
+      console.log(`\n  cd packages/${packageName} && npm publish --access public\n`)
       throw error
     }
     throw error
@@ -201,8 +202,8 @@ async function main() {
   const currentCoreVersion = getCurrentVersion('core')
   
   console.log(`${colors.cyan}当前版本:${colors.reset}`)
-  console.log(`  @fluxui/theme: ${currentThemeVersion}`)
-  console.log(`  @fluxui/core:  ${currentCoreVersion}\n`)
+  console.log(`  @fluxuijs/theme: ${currentThemeVersion}`)
+  console.log(`  @fluxuijs/core:  ${currentCoreVersion}\n`)
   
   // 计算预期的新版本
   const [major, minor, patch] = currentCoreVersion.split('.').map(Number)
@@ -238,8 +239,8 @@ async function main() {
   const newCoreVersion = updateVersion('core', versionType)
   
   console.log(`\n新版本:`)
-  console.log(`  @fluxui/theme: ${colors.green}${newThemeVersion}${colors.reset}`)
-  console.log(`  @fluxui/core:  ${colors.green}${newCoreVersion}${colors.reset}`)
+  console.log(`  @fluxuijs/theme: ${colors.green}${newThemeVersion}${colors.reset}`)
+  console.log(`  @fluxuijs/core:  ${colors.green}${newCoreVersion}${colors.reset}`)
   
   // 6. 确认发布
   const shouldPublish = await confirm({
@@ -286,11 +287,11 @@ async function main() {
     console.log(`\n${colors.green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`)
     console.log(`${colors.green}🎉 发布成功！版本: v${newCoreVersion}${colors.reset}`)
     console.log(`\n📦 已发布的包:`)
-    console.log(`   - @fluxui/theme@${newThemeVersion}`)
-    console.log(`   - @fluxui/core@${newCoreVersion}`)
+    console.log(`   - @fluxuijs/theme@${newThemeVersion}`)
+    console.log(`   - @fluxuijs/core@${newCoreVersion}`)
     console.log(`\n🔗 查看发布:`)
-    console.log(`   npm view @fluxui/theme`)
-    console.log(`   npm view @fluxui/core`)
+    console.log(`   npm view @fluxuijs/theme`)
+    console.log(`   npm view @fluxuijs/core`)
     console.log(`${colors.green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`)
     
   } catch (error) {
