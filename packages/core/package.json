@@ -1,6 +1,6 @@
 {
   "name": "@fluxuijs/core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "FluxUI - Modern Vue 3 Component Library",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -68,7 +68,7 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@fluxui/theme": "workspace:*",
+    "@fluxuijs/theme": "workspace:*",
     "@tsconfig/node24": "^24.0.3",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.2",
