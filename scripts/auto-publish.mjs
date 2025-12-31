@@ -169,17 +169,9 @@ function commitAndTag(version) {
 async function main() {
   console.log('\n🚀 FluxUI 自动发布工具\n')
   
-  // 1. 检查 npm 登录
-  const loginOk = checkNpmLogin()
-  if (!loginOk) {
-    // 在测试模式下提供选项
-    const answer = await confirm({
-      message: '继续而不检查登录状态？（仅用于测试）',
-      default: false,
-    })
-    if (!answer) {
-      process.exit(1)
-    }
+  // 1. 检查 npm 登录（必须先登录）
+  if (!checkNpmLogin()) {
+    process.exit(1)
   }
   
   // 2. 检查 Git 状态
