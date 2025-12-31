@@ -1,6 +1,6 @@
 import { inject, provide, computed, type Ref, type ComputedRef, type InjectionKey } from 'vue'
-import type { Theme, ThemeMode } from '../../../../theme/src'
-import { lightTheme, darkTheme } from '../../../../theme/src'
+import type { Theme, ThemeMode } from '@fluxui/theme'
+import { lightTheme, darkTheme } from '@fluxui/theme'
 
 export interface ThemeContext {
   theme: ComputedRef<Theme>

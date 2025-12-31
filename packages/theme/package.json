@@ -1,0 +1,68 @@
+{
+  "name": "@fluxui/theme",
+  "version": "0.1.0",
+  "description": "FluxUI Design Tokens and Theme System",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./tokens": {
+      "import": {
+        "types": "./dist/tokens/index.d.ts",
+        "default": "./dist/tokens/index.js"
+      },
+      "require": {
+        "types": "./dist/tokens/index.d.ts",
+        "default": "./dist/tokens/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "fluxui",
+    "theme",
+    "design-tokens",
+    "design-system",
+    "vue3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/fluxui.git",
+    "directory": "packages/theme"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/fluxui/issues"
+  },
+  "homepage": "https://github.com/yourusername/fluxui#readme",
+  "devDependencies": {
+    "typescript": "~5.9.0",
+    "vite": "^7.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

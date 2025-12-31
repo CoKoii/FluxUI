@@ -6,6 +6,13 @@
     "dev:core": "pnpm --filter @fluxui/core dev",
     "dev:playground": "pnpm --filter @fluxui/playground dev",
     "dev:docs": "pnpm --filter @fluxui/docs dev",
+    "new": "node scripts/create-component.mjs",
+    "release": "node scripts/auto-publish.mjs",
+    "build": "pnpm build:theme && pnpm build:core",
+    "build:theme": "pnpm --filter @fluxui/theme build",
+    "build:core": "pnpm --filter @fluxui/core build",
+    "clean": "pnpm -r exec rm -rf dist node_modules/.vite",
+    "clean:dist": "pnpm -r exec rm -rf dist",
     "prepare": "husky install"
   },
   "devDependencies": {

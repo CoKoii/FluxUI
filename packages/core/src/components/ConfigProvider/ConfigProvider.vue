@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { lightTheme, applyTheme, DEFAULT_PREFIX, DEFAULT_ATTRIBUTE } from '../../../../theme/src'
+import { lightTheme, applyTheme, DEFAULT_PREFIX, DEFAULT_ATTRIBUTE } from '@fluxui/theme'
 import { watch, onMounted, ref, useTemplateRef } from 'vue'
 import type { ConfigProviderProps } from './types'
 import { provideThemeContext } from './context'

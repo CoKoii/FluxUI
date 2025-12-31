@@ -1,19 +1,74 @@
 {
   "name": "@fluxui/core",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "description": "FluxUI - Modern Vue 3 Component Library",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles": "./dist/style.css",
+    "./dist/style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "*.vue"
+  ],
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "npm run build:lib && npm run build:types",
+    "build:lib": "vite build",
+    "build:types": "vue-tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
   },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component-library",
+    "ui",
+    "fluxui",
+    "design-system",
+    "components"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/fluxui.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/fluxui/issues"
+  },
+  "homepage": "https://github.com/yourusername/fluxui#readme",
   "dependencies": {
-    "lucide-vue-next": "^0.555.0",
-    "vue": "^3.5.25"
+    "lucide-vue-next": "^0.555.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@fluxui/theme": "workspace:*",
     "@tsconfig/node24": "^24.0.3",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.2",
@@ -29,7 +84,12 @@
     "sass": "^1.94.2",
     "typescript": "~5.9.0",
     "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-vue-devtools": "^8.0.5",
+    "vue": "^3.5.25",
     "vue-tsc": "^3.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,48 +1,63 @@
-# core
+# @fluxui/core
 
-This template should help get you started developing with Vue 3 in Vite.
+现代化、工程化的 Vue 3 UI 组件库
 
-## Recommended IDE Setup
+## 安装
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+```bash
+npm install @fluxui/core
+# or
+pnpm add @fluxui/core
+```
 
-## Recommended Browser Setup
+## 快速开始
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 全局注册
 
-## Type Support for `.vue` Imports in TS
+```typescript
+import { createApp } from 'vue'
+import FluxUI from '@fluxui/core'
+import '@fluxui/core/dist/style.css'
+import App from './App.vue'
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+const app = createApp(App)
+app.use(FluxUI)
+app.mount('#app')
+```
 
-## Customize configuration
+### 按需引入
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```vue
+<script setup lang="ts">
+import { Button, Alert } from '@fluxui/core'
+import '@fluxui/core/dist/style.css'
+</script>
 
-## Project Setup
+<template>
+  <Button>Click me</Button>
+  <Alert>This is an alert</Alert>
+</template>
+```
 
-```sh
+## 组件列表
+
+- Button 按钮
+- Alert 警告提示
+- ConfigProvider 配置提供者
+
+## 开发
+
+```bash
+# 安装依赖
 pnpm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# 开发模式
 pnpm dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# 构建
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## License
 
-```sh
-pnpm lint
-```
+MIT

@@ -1,4 +1,4 @@
-import type { Theme, ApplyThemeOptions } from '../../../../theme/src'
+import type { Theme, ApplyThemeOptions } from '@fluxui/theme'
 
 export interface ConfigProviderProps extends ApplyThemeOptions {
   theme?: Theme
