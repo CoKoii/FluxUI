@@ -11,10 +11,12 @@
     color var(--fl-motion-transition-300ease),
     border var(--fl-motion-transition-300ease);
   user-select: none;
-  &:hover {
+  &:hover,
+  &:focus-within {
     .close {
       opacity: 1;
       transform: rotate(-180deg) scale(1);
+      pointer-events: auto;
       transition: all var(--fl-motion-transition-300ease);
     }
   }
@@ -40,11 +42,22 @@
   }
   .close {
     margin-left: auto;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: var(--fl-padding-8);
+    background: transparent;
+    border: 0;
+    color: inherit;
     cursor: pointer;
     transform: scale(0.8);
     opacity: 0;
+    pointer-events: none;
+  }
+  .close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 }
 

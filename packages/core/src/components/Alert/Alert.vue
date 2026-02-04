@@ -33,7 +33,15 @@ defineOptions({
       <div class="text">
         <slot></slot>
       </div>
-      <X v-if="props.closable" class="close" fill="currentColor" :size="22" @click="show = false" />
+      <button
+        v-if="props.closable"
+        type="button"
+        class="close"
+        aria-label="Close alert"
+        @click="show = false"
+      >
+        <X fill="currentColor" :size="22" />
+      </button>
     </div>
   </Transition>
 </template>
