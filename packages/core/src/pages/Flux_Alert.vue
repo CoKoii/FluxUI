@@ -13,7 +13,7 @@ defineOptions({
   <Alert color="default" variant="faded">Default Faded Alert</Alert>
 
   <!-- Primary Color Variants -->
-  <Alert color="primary" variant="solid">Primary Solid Alert</Alert>
+  <Alert color="primary" variant="solid" closable>Primary Solid Alert</Alert>
   <Alert color="primary" variant="bordered">Primary Bordered Alert</Alert>
   <Alert color="primary" variant="flat">Primary Flat Alert</Alert>
   <Alert color="primary" variant="faded">Primary Faded Alert</Alert>

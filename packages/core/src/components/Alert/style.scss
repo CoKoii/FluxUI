@@ -11,6 +11,13 @@
     color var(--fl-motion-transition-300ease),
     border var(--fl-motion-transition-300ease);
   user-select: none;
+  &:hover {
+    .close {
+      opacity: 1;
+      transform: rotate(-180deg) scale(1);
+      transition: all var(--fl-motion-transition-300ease);
+    }
+  }
   .icon {
     border-radius: var(--fl-radius-9999);
     display: flex;
@@ -30,6 +37,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     transition: color var(--fl-motion-transition-300ease);
+  }
+  .close {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform: scale(0.8);
+    opacity: 0;
   }
 }
 

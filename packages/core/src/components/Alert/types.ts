@@ -7,4 +7,6 @@ export interface AlertProps {
   radius?: 'none' | 'sm' | 'md' | 'lg' | 'full'
   // 图标隐藏
   hiddenIcon?: boolean
+  // 可关闭
+  closable?: boolean
 }

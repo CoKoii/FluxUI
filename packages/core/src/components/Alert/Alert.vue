@@ -1,38 +1,53 @@
 <script setup lang="ts">
-import { Bell } from 'lucide-vue-next'
+import { Bell, X } from 'lucide-vue-next'
+import { ref } from 'vue'
 import type { AlertProps } from './types'
-
 const props = withDefaults(defineProps<AlertProps>(), {
   color: 'default',
   variant: 'flat',
   radius: 'md',
   hiddenIcon: false,
 })
+const show = ref(true)
 defineOptions({
   name: 'FLAlert',
 })
 </script>
 
 <template>
-  <div
-    class="Alert"
-    :class="{
-      ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
-      ['alert_radius_' + props.radius]: props.radius,
-      ['alert_icon_hidden']: props.hiddenIcon,
-    }"
-  >
-    <div class="icon">
-      <slot name="icon">
-        <Bell fill="currentColor" :size="22" />
-      </slot>
+  <Transition name="AlertClose">
+    <div
+      class="Alert"
+      v-if="show"
+      :class="{
+        ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
+        ['alert_radius_' + props.radius]: props.radius,
+        ['alert_icon_hidden']: props.hiddenIcon,
+      }"
+    >
+      <div class="icon">
+        <slot name="icon">
+          <Bell fill="currentColor" :size="22" />
+        </slot>
+      </div>
+      <div class="text">
+        <slot></slot>
+      </div>
+      <X v-if="props.closable" class="close" fill="currentColor" :size="22" @click="show = false" />
     </div>
-    <div class="text">
-      <slot></slot>
-    </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped lang="scss">
 @use './style.scss';
+
+.AlertClose-enter-active,
+.AlertClose-leave-active {
+  transition: all 0.3s;
+}
+.AlertClose-enter-from,
+.AlertClose-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
 </style>
