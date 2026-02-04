@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import type { ComponentMountingOptions } from '@vue/test-utils'
+import type { ComponentMountingOptions, GlobalMountOptions } from '@vue/test-utils'
 import { mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
 import Alert from '../Alert.vue'
@@ -13,7 +13,7 @@ const mountAlert = (
     ...options,
     global: {
       stubs: { Transition: { template: '<div><slot /></div>' } },
-      ...(options?.global ?? {}),
+      ...((options?.global ?? {}) as GlobalMountOptions),
     },
   })
 describe('Alert', () => {

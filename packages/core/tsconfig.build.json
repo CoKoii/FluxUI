@@ -14,6 +14,10 @@
     "dist",
     "src/main.ts",
     "src/App.vue",
-    "src/pages/**"
+    "src/pages/**",
+    "src/**/__test__/**",
+    "src/**/__tests__/**",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
   ]
 }

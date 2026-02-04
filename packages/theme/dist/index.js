@@ -1,6 +1,6 @@
-import { s as c, p, r as d, b as k, d as x } from "./index-Bn3lzX2I.js";
-import { i as S } from "./index-Bn3lzX2I.js";
-const l = {
+import { s as u, p as m, r as g, b as $, d as A } from "./index-Bn3lzX2I.js";
+import { i as U } from "./index-Bn3lzX2I.js";
+const y = {
   4: "4px",
   6: "6px",
   8: "8px",
@@ -8,7 +8,7 @@ const l = {
   16: "16px",
   20: "20px",
   24: "24px"
-}, m = {
+}, h = {
   family: [
     "system-ui",
     "-apple-system",
@@ -36,64 +36,81 @@ const l = {
   size14: "14px",
   size16: "16px",
   size20: "20px"
-}, u = {
+}, x = {
   transition: {
     "300ease": "0.3s ease"
   }
-}, f = {
+}, k = {
   solid_1: "1px solid"
-}, y = {
+}, j = {
   name: "light",
   tokens: {
-    colors: { ...k },
-    radius: d,
-    padding: p,
-    shadows: c,
-    gap: l,
-    font: m,
-    motion: u,
-    border: f
+    colors: { ...$ },
+    radius: g,
+    padding: m,
+    shadows: u,
+    gap: y,
+    font: h,
+    motion: x,
+    border: k
   }
-}, z = {
+}, S = {
   name: "dark",
   tokens: {
-    colors: { ...x },
-    radius: d,
-    padding: p,
-    shadows: c,
-    gap: l,
-    font: m,
-    motion: u,
-    border: f
+    colors: { ...A },
+    radius: g,
+    padding: m,
+    shadows: u,
+    gap: y,
+    font: h,
+    motion: x,
+    border: k
   }
-}, w = "--fl", g = "fl-data-theme", r = (e) => e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(), b = (e) => e !== null && typeof e == "object" && !Array.isArray(e);
-function h(e, t, o, s = "") {
-  for (const [n, i] of Object.entries(
+}, C = "--fl", b = "fl-data-theme", f = (e) => e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(), E = (e) => e !== null && typeof e == "object" && !Array.isArray(e);
+function T(e, t, c = "", s = {}) {
+  for (const [i, o] of Object.entries(
     e
   )) {
-    const a = s ? `${s}-${r(n)}` : r(n);
-    b(i) ? h(i, t, o, a) : t.style.setProperty(`${o}-${a}`, String(i));
+    const a = c ? `${c}-${f(i)}` : f(i);
+    E(o) ? T(o, t, a, s) : s[`${t}-${a}`] = String(o);
   }
+  return s;
 }
-function T(e, t = document.documentElement, o = {}) {
-  const { prefix: s = w, attribute: n = g } = o;
-  t.setAttribute(n, e.name), h(e.tokens, t, s);
+const p = /* @__PURE__ */ new Map();
+function w(e) {
+  return e ?? (typeof document > "u" ? void 0 : document.documentElement);
 }
-function A(e = document.documentElement) {
-  return e.getAttribute(g) === "dark" ? "dark" : "light";
+function v(e, t, c = {}) {
+  const { prefix: s = C, attribute: i = b } = c, o = w(t);
+  if (!o) return;
+  const a = T(e.tokens, s), l = `[${i}="${e.name}"]{${Object.entries(a).map(([n, r]) => `${n}: ${r};`).join("")}}`;
+  if (typeof document < "u") {
+    const n = `${s}|${i}|${e.name}`, r = p.get(n);
+    if (!r || r.cssText !== l) {
+      const d = r?.style ?? document.createElement("style");
+      r || (d.setAttribute("data-fluxuijs-theme", n), document.head.appendChild(d)), d.textContent = l, p.set(n, { cssText: l, style: d });
+    }
+  }
+  for (const n of Object.keys(a))
+    o.style.removeProperty(n);
+  o.setAttribute(i, e.name);
 }
-function $(e = document.documentElement) {
-  return A(e) === "dark";
+function z(e) {
+  const t = w(e);
+  return t && t.getAttribute(b) === "dark" ? "dark" : "light";
 }
-typeof window < "u" && typeof document < "u" && T(y);
+function M(e) {
+  return z(e) === "dark";
+}
+typeof window < "u" && typeof document < "u" && v(j);
 export {
-  g as DEFAULT_ATTRIBUTE,
-  w as DEFAULT_PREFIX,
-  T as applyTheme,
-  z as darkTheme,
-  A as getThemeMode,
-  $ as isDark,
-  y as lightTheme,
-  S as tokens
+  b as DEFAULT_ATTRIBUTE,
+  C as DEFAULT_PREFIX,
+  v as applyTheme,
+  S as darkTheme,
+  z as getThemeMode,
+  M as isDark,
+  j as lightTheme,
+  U as tokens
 };
 //# sourceMappingURL=index.js.map

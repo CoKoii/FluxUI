@@ -125,6 +125,13 @@ function cleanAndBuild() {
   log.success('构建完成')
 }
 
+// 运行单元测试
+function runUnitTests() {
+  log.step('运行单元测试...')
+  exec('pnpm --filter @fluxuijs/core test')
+  log.success('单元测试通过')
+}
+
 // 验证构建产物
 function validateBuild() {
   log.step('验证构建产物...')
@@ -256,17 +263,20 @@ async function main() {
   console.log('')
   
   try {
-    // 7. 清理并构建
+    // 7. 运行单元测试
+    runUnitTests()
+
+    // 8. 清理并构建
     cleanAndBuild()
     
-    // 8. 验证构建产物
+    // 9. 验证构建产物
     validateBuild()
     
-    // 9. 发布包（先 theme，后 core）
+    // 10. 发布包（先 theme，后 core）
     publishPackage('theme')
     publishPackage('core')
     
-    // 10. Git 提交和打标签
+    // 11. Git 提交和打标签
     if (gitClean || (await confirm({ message: '是否提交到 Git？', default: true }))) {
       commitAndTag(newCoreVersion)
       
@@ -283,7 +293,7 @@ async function main() {
       }
     }
     
-    // 11. 完成
+    // 12. 完成
     console.log(`\n${colors.green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`)
     console.log(`${colors.green}🎉 发布成功！版本: v${newCoreVersion}${colors.reset}`)
     console.log(`\n📦 已发布的包:`)
