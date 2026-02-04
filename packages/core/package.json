@@ -62,13 +62,13 @@
   },
   "homepage": "https://github.com/yourusername/fluxui#readme",
   "dependencies": {
+    "@fluxuijs/theme": "workspace:*",
     "lucide-vue-next": "^0.555.0"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@fluxuijs/theme": "workspace:*",
     "@tsconfig/node24": "^24.0.3",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.2",

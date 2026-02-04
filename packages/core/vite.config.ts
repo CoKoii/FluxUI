@@ -39,13 +39,13 @@ export default defineConfig(({ mode }) => {
         },
       },
       rollupOptions: {
-        external: ['vue', 'lucide-vue-next', '@fluxui/theme'],
+        external: ['vue', 'lucide-vue-next', '@fluxuijs/theme'],
         output: {
           exports: 'named',
           globals: {
             vue: 'Vue',
             'lucide-vue-next': 'LucideVueNext',
-            '@fluxui/theme': 'FluxUITheme',
+            '@fluxuijs/theme': 'FluxUITheme',
           },
           assetFileNames: (assetInfo) => {
             // 只保留 CSS 文件

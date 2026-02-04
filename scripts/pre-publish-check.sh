@@ -55,7 +55,7 @@ check_step "构建完成"
 echo ""
 
 # 5. 检查 theme 包构建产物
-echo "🎨 检查 @fluxui/theme 构建产物..."
+echo "🎨 检查 @fluxuijs/theme 构建产物..."
 
 if [ ! -f "packages/theme/dist/index.js" ]; then
   echo -e "${RED}❌ index.js 不存在${NC}"
@@ -77,11 +77,11 @@ if [ ! -f "packages/theme/dist/tokens/index.js" ]; then
   exit 1
 fi
 
-check_step "@fluxui/theme 构建产物完整"
+check_step "@fluxuijs/theme 构建产物完整"
 echo ""
 
 # 6. 检查 core 包构建产物
-echo "🎯 检查 @fluxui/core 构建产物..."
+echo "🎯 检查 @fluxuijs/core 构建产物..."
 
 if [ ! -f "packages/core/dist/index.js" ]; then
   echo -e "${RED}❌ index.js 不存在${NC}"
@@ -103,7 +103,7 @@ if [ ! -f "packages/core/dist/style.css" ]; then
   exit 1
 fi
 
-check_step "@fluxui/core 构建产物完整"
+check_step "@fluxuijs/core 构建产物完整"
 echo ""
 
 # 7. 检查类型定义
@@ -111,16 +111,16 @@ echo "📘 检查类型定义..."
 
 # 检查 theme 类型
 if grep -q "export.*from.*types" packages/theme/dist/index.d.ts; then
-  check_step "@fluxui/theme 类型定义导出正确"
+  check_step "@fluxuijs/theme 类型定义导出正确"
 else
-  echo -e "${RED}❌ @fluxui/theme 类型定义可能有问题${NC}"
+  echo -e "${RED}❌ @fluxuijs/theme 类型定义可能有问题${NC}"
 fi
 
 # 检查 core 类型
 if grep -q "export.*Alert.*Button.*ConfigProvider" packages/core/dist/index.d.ts; then
-  check_step "@fluxui/core 类型定义导出正确"
+  check_step "@fluxuijs/core 类型定义导出正确"
 else
-  echo -e "${RED}❌ @fluxui/core 类型定义可能有问题${NC}"
+  echo -e "${RED}❌ @fluxuijs/core 类型定义可能有问题${NC}"
 fi
 echo ""
 
@@ -129,13 +129,13 @@ echo "📄 检查 package.json 配置..."
 
 # 检查 theme package.json
 if ! grep -q '"access": "public"' packages/theme/package.json; then
-  echo -e "${RED}❌ @fluxui/theme 缺少 publishConfig.access${NC}"
+  echo -e "${RED}❌ @fluxuijs/theme 缺少 publishConfig.access${NC}"
   exit 1
 fi
 
 # 检查 core package.json
 if ! grep -q '"access": "public"' packages/core/package.json; then
-  echo -e "${RED}❌ @fluxui/core 缺少 publishConfig.access${NC}"
+  echo -e "${RED}❌ @fluxuijs/core 缺少 publishConfig.access${NC}"
   exit 1
 fi
 
@@ -145,7 +145,7 @@ echo ""
 # 9. 显示包信息
 echo "📊 包信息..."
 echo ""
-echo "📦 @fluxui/theme"
+echo "📦 @fluxuijs/theme"
 THEME_VERSION=$(grep '"version"' packages/theme/package.json | head -1 | sed 's/.*: "\(.*\)".*/\1/')
 echo "   版本: $THEME_VERSION"
 echo "   文件大小:"
@@ -153,7 +153,7 @@ ls -lh packages/theme/dist/index.js | awk '{print "   - index.js:", $5}'
 ls -lh packages/theme/dist/index.cjs | awk '{print "   - index.cjs:", $5}'
 echo ""
 
-echo "📦 @fluxui/core"
+echo "📦 @fluxuijs/core"
 CORE_VERSION=$(grep '"version"' packages/core/package.json | head -1 | sed 's/.*: "\(.*\)".*/\1/')
 echo "   版本: $CORE_VERSION"
 echo "   文件大小:"

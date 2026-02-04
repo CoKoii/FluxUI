@@ -1,5 +1,5 @@
 {
-  "name": "@fluxui/playground",
+  "name": "@fluxuijs/playground",
   "scripts": {
     "dev": "vite"
   }

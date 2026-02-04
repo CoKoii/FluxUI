@@ -21,11 +21,18 @@ watch(
 provideThemeContext(themeRef)
 
 const apply = () => {
-  if (!containerRef.value) return
-  applyTheme(themeRef.value, containerRef.value, {
-    prefix: props.prefix,
+  const target = containerRef.value
+  if (!target) return
+  applyTheme(themeRef.value, target, {
+    prefix: DEFAULT_PREFIX,
     attribute: props.attribute,
   })
+  if (props.prefix && props.prefix !== DEFAULT_PREFIX) {
+    applyTheme(themeRef.value, target, {
+      prefix: props.prefix,
+      attribute: props.attribute,
+    })
+  }
 }
 
 onMounted(apply)

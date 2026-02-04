@@ -34,7 +34,10 @@
     "README.md",
     "LICENSE"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/index.js",
+    "./dist/index.cjs"
+  ],
   "scripts": {
     "build": "vite build && npm run build:types",
     "build:types": "tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",

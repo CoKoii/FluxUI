@@ -1,13 +1,13 @@
-# @fluxui/core
+# @fluxuijs/core
 
 现代化、工程化的 Vue 3 UI 组件库
 
 ## 安装
 
 ```bash
-npm install @fluxui/core
+npm install @fluxuijs/core
 # or
-pnpm add @fluxui/core
+pnpm add @fluxuijs/core
 ```
 
 ## 快速开始
@@ -16,8 +16,8 @@ pnpm add @fluxui/core
 
 ```typescript
 import { createApp } from 'vue'
-import FluxUI from '@fluxui/core'
-import '@fluxui/core/dist/style.css'
+import FluxUI from '@fluxuijs/core'
+import '@fluxuijs/core/dist/style.css'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -29,8 +29,8 @@ app.mount('#app')
 
 ```vue
 <script setup lang="ts">
-import { Button, Alert } from '@fluxui/core'
-import '@fluxui/core/dist/style.css'
+import { Button, Alert } from '@fluxuijs/core'
+import '@fluxuijs/core/dist/style.css'
 </script>
 
 <template>

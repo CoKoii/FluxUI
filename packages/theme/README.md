@@ -1,20 +1,20 @@
-# @fluxui/theme
+# @fluxuijs/theme
 
 FluxUI 主题系统和设计令牌
 
 ## 安装
 
 ```bash
-npm install @fluxui/theme
+npm install @fluxuijs/theme
 # or
-pnpm add @fluxui/theme
+pnpm add @fluxuijs/theme
 ```
 
 ## 使用
 
 ```typescript
-import { applyTheme, lightTheme, darkTheme } from '@fluxui/theme'
-import { tokens } from '@fluxui/theme'
+import { applyTheme, lightTheme, darkTheme } from '@fluxuijs/theme'
+import { tokens } from '@fluxuijs/theme'
 
 // 应用主题
 applyTheme(lightTheme)

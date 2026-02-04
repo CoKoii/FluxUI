@@ -1,5 +1,5 @@
 {
-  "name": "@fluxui/docs",
+  "name": "@fluxuijs/docs",
   "scripts": {
     "dev": "vitepress dev",
     "docs:dev": "vitepress dev",
