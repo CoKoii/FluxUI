@@ -13,14 +13,12 @@ pnpm add @fluxuijs/theme
 ## 使用
 
 ```typescript
-import { applyTheme, lightTheme, darkTheme } from '@fluxuijs/theme'
-import { tokens } from '@fluxuijs/theme'
+import { applyTheme, lightTheme, darkTheme } from "@fluxuijs/theme";
+import { tokens } from "@fluxuijs/theme";
 
-// 应用主题
-applyTheme(lightTheme)
+applyTheme(lightTheme);
 
-// 使用设计令牌
-console.log(tokens.colors)
+console.log(tokens.colors);
 ```
 
 ## License

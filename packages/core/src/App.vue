@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Moon, Sun } from 'lucide-vue-next'
-import { darkTheme, lightTheme } from '../../theme/src'
+import { darkTheme, lightTheme } from '@fluxuijs/theme'
 import ConfigProvider from './components/ConfigProvider/ConfigProvider.vue'
 import { ref } from 'vue'
 import Flux_Alert from './pages/Flux_Alert.vue'

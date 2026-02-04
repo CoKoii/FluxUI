@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': fileURLToPath(new URL('./src', import.meta.url)),
+          '@fluxuijs/theme': resolve(__dirname, '../theme/src'),
         },
       },
     }
