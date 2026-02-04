@@ -13,7 +13,6 @@ defineOptions({
   name: 'FLAlert',
 })
 </script>
-
 <template>
   <Transition name="AlertClose">
     <div
