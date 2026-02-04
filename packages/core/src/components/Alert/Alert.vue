@@ -9,29 +9,23 @@ const props = withDefaults(defineProps<AlertProps>(), {
   hiddenIcon: false,
 })
 const show = ref(true)
-defineOptions({
-  name: 'FLAlert',
-})
+defineOptions({ name: 'FLAlert' })
 </script>
 <template>
   <Transition name="AlertClose">
     <div
-      class="Alert"
       v-if="show"
+      class="Alert"
       :class="{
         ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
         ['alert_radius_' + props.radius]: props.radius,
-        ['alert_icon_hidden']: props.hiddenIcon,
+        alert_icon_hidden: props.hiddenIcon,
       }"
     >
       <div class="icon">
-        <slot name="icon">
-          <Bell fill="currentColor" :size="22" />
-        </slot>
+        <slot name="icon"><Bell fill="currentColor" :size="22" /></slot>
       </div>
-      <div class="text">
-        <slot></slot>
-      </div>
+      <div class="text"><slot /></div>
       <button
         v-if="props.closable"
         type="button"
@@ -47,7 +41,6 @@ defineOptions({
 
 <style scoped lang="scss">
 @use './style.scss';
-
 .AlertClose-enter-active,
 .AlertClose-leave-active {
   transition: all 0.3s;
