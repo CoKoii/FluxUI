@@ -49,6 +49,14 @@ function exec(command, options = {}) {
   }
 }
 
+function readJson(filePath) {
+  return JSON.parse(readFileSync(filePath, 'utf-8'))
+}
+
+function writeJson(filePath, data) {
+  writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n')
+}
+
 // 设置 inquirer 输入源
 function setupInquirer() {
   process.stdin.setEncoding('utf8')
@@ -57,11 +65,20 @@ function setupInquirer() {
 // 检查 Git 状态
 function checkGitStatus() {
   const status = exec('git status --porcelain', { silent: true })
-  if (status && status.trim()) {
-    log.warn('工作区有未提交的变更')
-    return false
-  }
-  return true
+  return !(status && status.trim())
+}
+
+function checkGitUpstream() {
+  const upstream = exec('git rev-parse --abbrev-ref --symbolic-full-name @{u}', {
+    silent: true,
+    ignoreError: true,
+  })
+  if (!upstream || !upstream.trim()) return null
+  const counts = exec('git rev-list --left-right --count @{u}...HEAD', {
+    silent: true,
+  })
+  const [behind, ahead] = counts.trim().split('\t').map(Number)
+  return { behind, ahead }
 }
 
 // 检查 npm 登录状态
@@ -84,32 +101,31 @@ function checkNpmLogin() {
 // 获取当前版本
 function getCurrentVersion(packageName) {
   const packagePath = join(projectRoot, `packages/${packageName}/package.json`)
-  const pkg = JSON.parse(readFileSync(packagePath, 'utf-8'))
+  const pkg = readJson(packagePath)
   return pkg.version
+}
+
+function computeNextVersion(currentVersion, versionType) {
+  const [major, minor, patch] = currentVersion.split('.').map(Number)
+  switch (versionType) {
+    case 'patch':
+      return `${major}.${minor}.${patch + 1}`
+    case 'minor':
+      return `${major}.${minor + 1}.0`
+    case 'major':
+      return `${major + 1}.0.0`
+    default:
+      throw new Error(`未知版本类型: ${versionType}`)
+  }
 }
 
 // 更新版本号
 function updateVersion(packageName, versionType) {
   const packagePath = join(projectRoot, `packages/${packageName}/package.json`)
-  const pkg = JSON.parse(readFileSync(packagePath, 'utf-8'))
-  
-  const [major, minor, patch] = pkg.version.split('.').map(Number)
-  
-  let newVersion
-  switch (versionType) {
-    case 'patch':
-      newVersion = `${major}.${minor}.${patch + 1}`
-      break
-    case 'minor':
-      newVersion = `${major}.${minor + 1}.0`
-      break
-    case 'major':
-      newVersion = `${major + 1}.0.0`
-      break
-  }
-  
+  const pkg = readJson(packagePath)
+  const newVersion = computeNextVersion(pkg.version, versionType)
   pkg.version = newVersion
-  writeFileSync(packagePath, JSON.stringify(pkg, null, 2) + '\n')
+  writeJson(packagePath, pkg)
   
   return newVersion
 }
@@ -175,17 +191,48 @@ function publishPackage(packageName) {
   }
 }
 
+function ensureTagNotExists(version) {
+  const result = exec(`git tag -l v${version}`, { silent: true })
+  if (result && result.trim()) throw new Error(`Git tag v${version} 已存在`)
+}
+
+function ensureNpmVersionNotPublished(packageName, version) {
+  const result = exec(`npm view @fluxuijs/${packageName}@${version} version`, {
+    silent: true,
+    ignoreError: true,
+  })
+  if (result && result.trim() === version) throw new Error(`npm 上已存在 @fluxuijs/${packageName}@${version}`)
+}
+
+function updateLockfileIfNeeded() {
+  if (!existsSync(join(projectRoot, 'pnpm-lock.yaml'))) return
+  log.step('更新锁文件...')
+  exec('pnpm -w install --lockfile-only')
+  log.success('锁文件已更新')
+}
+
 // 提交 Git
 function commitAndTag(version) {
   log.step('提交版本变更...')
-  exec('git add .')
+  const filesToAdd = [
+    'packages/core/package.json',
+    'packages/theme/package.json',
+    'pnpm-lock.yaml',
+  ].filter((file) => existsSync(join(projectRoot, file)))
+  exec(`git add ${filesToAdd.join(' ')}`)
   exec(`git commit -m "chore: release v${version}"`)
   exec(`git tag v${version}`)
   log.success(`创建标签: v${version}`)
 }
 
+async function confirmOrExit(message, defaultValue = false) {
+  const ok = await confirm({ message, default: defaultValue })
+  if (!ok) process.exit(0)
+}
+
 async function main() {
   console.log('\n🚀 FluxUI 自动发布工具\n')
+  setupInquirer()
   
   // 1. 检查 npm 登录（必须先登录）
   if (!checkNpmLogin()) {
@@ -194,14 +241,15 @@ async function main() {
   
   // 2. 检查 Git 状态
   const gitClean = checkGitStatus()
-  if (!gitClean) {
-    const shouldContinue = await confirm({
-      message: '工作区不干净，是否继续？',
-      default: false,
-    })
-    if (!shouldContinue) {
-      process.exit(0)
-    }
+  if (!gitClean) await confirmOrExit('工作区不干净，是否继续？')
+
+  // 2.1 检查 Git 远程同步状态
+  const upstream = checkGitUpstream()
+  if (!upstream) {
+    log.warn('当前分支未设置 upstream，无法检查远程同步状态')
+  } else if (upstream.behind > 0 || upstream.ahead > 0) {
+    log.warn(`本地与远程不一致：领先 ${upstream.ahead}，落后 ${upstream.behind}`)
+    await confirmOrExit('本地与远程不一致，是否继续？')
   }
   
   // 3. 获取当前版本（在选择前）
@@ -212,11 +260,16 @@ async function main() {
   console.log(`  @fluxuijs/theme: ${currentThemeVersion}`)
   console.log(`  @fluxuijs/core:  ${currentCoreVersion}\n`)
   
+  // 3.1 校验版本一致性
+  if (currentThemeVersion !== currentCoreVersion) {
+    log.warn('core 和 theme 版本不一致')
+    await confirmOrExit('版本不一致，是否继续？')
+  }
+
   // 计算预期的新版本
-  const [major, minor, patch] = currentCoreVersion.split('.').map(Number)
-  const patchVersion = `${major}.${minor}.${patch + 1}`
-  const minorVersion = `${major}.${minor + 1}.0`
-  const majorVersion = `${major + 1}.0.0`
+  const patchVersion = computeNextVersion(currentCoreVersion, 'patch')
+  const minorVersion = computeNextVersion(currentCoreVersion, 'minor')
+  const majorVersion = computeNextVersion(currentCoreVersion, 'major')
   
   // 4. 选择版本类型
   const versionType = await select({
@@ -240,43 +293,47 @@ async function main() {
     ],
   })
   
-  // 5. 更新版本号
-  log.step('更新版本号...')
-  const newThemeVersion = updateVersion('theme', versionType)
-  const newCoreVersion = updateVersion('core', versionType)
+  // 5. 计算新版本号（先计算，后写入）
+  const newThemeVersion = computeNextVersion(currentThemeVersion, versionType)
+  const newCoreVersion = computeNextVersion(currentCoreVersion, versionType)
   
   console.log(`\n新版本:`)
   console.log(`  @fluxuijs/theme: ${colors.green}${newThemeVersion}${colors.reset}`)
   console.log(`  @fluxuijs/core:  ${colors.green}${newCoreVersion}${colors.reset}`)
   
   // 6. 确认发布
-  const shouldPublish = await confirm({
-    message: '\n确认发布？',
-    default: true,
-  })
-  
-  if (!shouldPublish) {
-    log.warn('取消发布')
-    process.exit(0)
-  }
+  const shouldPublish = await confirm({ message: '\n确认发布？', default: true })
+  if (!shouldPublish) process.exit(0)
   
   console.log('')
   
   try {
-    // 7. 运行单元测试
+    // 7. 发布前检查 tag 与 npm 版本
+    ensureTagNotExists(newCoreVersion)
+    ensureNpmVersionNotPublished('theme', newThemeVersion)
+    ensureNpmVersionNotPublished('core', newCoreVersion)
+
+    // 8. 运行单元测试
     runUnitTests()
 
-    // 8. 清理并构建
+    // 9. 清理并构建
     cleanAndBuild()
     
-    // 9. 验证构建产物
+    // 10. 验证构建产物
     validateBuild()
+
+    // 11. 更新版本号
+    log.step('更新版本号...')
+    updateVersion('theme', versionType)
+    updateVersion('core', versionType)
+    updateLockfileIfNeeded()
+    log.success('版本号更新完成')
     
-    // 10. 发布包（先 theme，后 core）
+    // 12. 发布包（先 theme，后 core）
     publishPackage('theme')
     publishPackage('core')
     
-    // 11. Git 提交和打标签
+    // 13. Git 提交和打标签
     if (gitClean || (await confirm({ message: '是否提交到 Git？', default: true }))) {
       commitAndTag(newCoreVersion)
       
@@ -293,7 +350,7 @@ async function main() {
       }
     }
     
-    // 12. 完成
+    // 14. 完成
     console.log(`\n${colors.green}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`)
     console.log(`${colors.green}🎉 发布成功！版本: v${newCoreVersion}${colors.reset}`)
     console.log(`\n📦 已发布的包:`)
