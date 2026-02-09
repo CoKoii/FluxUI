@@ -1,49 +1,12 @@
----
-outline: deep
----
+# 页面迁移说明
 
-# Runtime API Examples
+`/api-examples` 原为 VitePress 运行时 API 示例页，现已迁移为 FluxUI 组件库文档。
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
-
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
-
-```md
-<script setup>
-import { useData } from 'vitepress'
-
-const { theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-```
-
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+<div class="migration-card">
+  <p><strong>请改用以下入口：</strong></p>
+  <ul>
+    <li><a href="/guide/quick-start">指南 / 快速开始</a></li>
+    <li><a href="/components/config-provider">组件 / ConfigProvider</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</div>

@@ -1,0 +1,139 @@
+:root {
+  --flux-doc-radius: 14px;
+  --flux-doc-border: var(--vp-c-divider);
+  --flux-doc-bg-soft: var(--vp-c-bg-soft);
+  --flux-doc-bg-mute: var(--vp-c-bg-mute);
+  --flux-doc-muted: var(--vp-c-text-2);
+}
+
+.demo-block {
+  margin: 16px 0 24px;
+  padding: 16px;
+  border: 1px solid var(--flux-doc-border);
+  border-radius: var(--flux-doc-radius);
+  background: linear-gradient(180deg, var(--flux-doc-bg-soft), var(--flux-doc-bg-mute));
+}
+
+.demo-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.demo-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.demo-panel {
+  border: 1px dashed var(--flux-doc-border);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--vp-c-bg);
+}
+
+.demo-panel h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.demo-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.demo-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.demo-button {
+  border: 1px solid var(--flux-doc-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--vp-c-bg);
+  transition: border-color 0.2s ease;
+}
+
+.demo-button:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.demo-tip {
+  margin: 0;
+  color: var(--flux-doc-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.demo-warning {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  color: #8a5a00;
+  border-radius: 8px;
+  border: 1px solid #f5d78a;
+  background: #fff8e7;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.api-table {
+  margin: 14px 0 20px;
+  overflow-x: auto;
+}
+
+.api-table table,
+.token-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.api-table th,
+.api-table td,
+.token-table th,
+.token-table td {
+  border: 1px solid var(--flux-doc-border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.api-table th,
+.token-table th {
+  background: var(--flux-doc-bg-soft);
+  font-weight: 600;
+}
+
+.token-table {
+  margin: 12px 0 20px;
+}
+
+.token-table__title {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.token-table__wrap {
+  overflow-x: auto;
+}
+
+.migration-card {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--flux-doc-border);
+  border-radius: var(--flux-doc-radius);
+  background: var(--flux-doc-bg-soft);
+}
+
+@media (max-width: 768px) {
+  .demo-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-toolbar {
+    flex-wrap: wrap;
+  }
+}

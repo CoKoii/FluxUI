@@ -6,6 +6,10 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
+  "dependencies": {
+    "@fluxuijs/core": "workspace:*",
+    "@fluxuijs/theme": "workspace:*"
+  },
   "devDependencies": {
     "vitepress": "2.0.0-alpha.15"
   }

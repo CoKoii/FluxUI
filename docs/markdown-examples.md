@@ -1,85 +1,12 @@
-# Markdown Extension Examples
+# 页面迁移说明
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+`/markdown-examples` 原为 VitePress 默认模板页，现已迁移为 FluxUI 文档结构。
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+<div class="migration-card">
+  <p><strong>请改用以下入口：</strong></p>
+  <ul>
+    <li><a href="/guide/installation">指南 / 安装</a></li>
+    <li><a href="/components/alert">组件 / Alert</a></li>
+    <li><a href="/theme/overview">主题系统 / 概览</a></li>
+  </ul>
+</div>
