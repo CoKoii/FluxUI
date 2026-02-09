@@ -1,61 +1,110 @@
-# Alert 警告提示
-
 <script setup lang="ts">
-import type { AlertProps } from '@fluxuijs/core'
+import DocDemo from '../.vitepress/components/DocDemo.vue'
+import DocApiTable from '../.vitepress/components/DocApiTable.vue'
+import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
+import AlertColorDemo from '../.vitepress/demos/alert/AlertColorDemo.vue'
+import AlertVariantDemo from '../.vitepress/demos/alert/AlertVariantDemo.vue'
+import AlertRadiusDemo from '../.vitepress/demos/alert/AlertRadiusDemo.vue'
+import AlertClosableDemo from '../.vitepress/demos/alert/AlertClosableDemo.vue'
+import AlertHiddenIconDemo from '../.vitepress/demos/alert/AlertHiddenIconDemo.vue'
 
-const colorTypes = "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'"
-const variantTypes = "'solid' | 'bordered' | 'flat' | 'faded'"
-const radiusTypes = "'none' | 'sm' | 'md' | 'lg' | 'full'"
+const propColumns = [
+  { key: 'name', label: '名称', code: true },
+  { key: 'type', label: '类型', code: true },
+  { key: 'default', label: '默认值', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const propRows = [
+  { name: 'color', type: "AlertProps['color']", default: "'default'", description: '颜色语义' },
+  { name: 'variant', type: "AlertProps['variant']", default: "'flat'", description: '展示变体' },
+  { name: 'radius', type: "AlertProps['radius']", default: "'md'", description: '圆角规格' },
+  { name: 'hiddenIcon', type: 'boolean', default: 'false', description: '是否隐藏左侧图标' },
+  { name: 'closable', type: 'boolean', default: 'false', description: '是否显示关闭按钮' },
+]
+
+const slotColumns = [
+  { key: 'name', label: '名称', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const slotRows = [
+  { name: 'default', description: '文本内容区域' },
+  { name: 'icon', description: '左侧图标区域，默认是 Bell 图标' },
+]
+
+const eventColumns = [
+  { key: 'name', label: '名称' },
+  { key: 'description', label: '说明' },
+]
+
+const eventRows = [{ name: '无', description: '当前版本未定义 emits' }]
+
+const typeRows = [
+  { name: 'AlertColor', value: "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'" },
+  { name: 'AlertVariant', value: "'solid' | 'bordered' | 'flat' | 'faded'" },
+  { name: 'AlertRadius', value: "'none' | 'sm' | 'md' | 'lg' | 'full'" },
+]
 </script>
+
+# Alert 警告提示
 
 ## 示例
 
-<AlertPlayground />
+### 颜色
+
+<DocDemo>
+  <AlertColorDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertColorDemo.vue
+
+### 变体
+
+<DocDemo>
+  <AlertVariantDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertVariantDemo.vue
+
+### 圆角
+
+<DocDemo>
+  <AlertRadiusDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertRadiusDemo.vue
+
+### 可关闭
+
+<DocDemo>
+  <AlertClosableDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertClosableDemo.vue
+
+### 隐藏左侧图标
+
+<DocDemo>
+  <AlertHiddenIconDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertHiddenIconDemo.vue
 
 ## API
 
 ### Props
 
-<div class="api-table">
+<DocApiTable :columns="propColumns" :rows="propRows" />
 
-| 名称 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `color` | `AlertProps['color']` | `'default'` | 颜色语义 |
-| `variant` | `AlertProps['variant']` | `'flat'` | 展示变体 |
-| `radius` | `AlertProps['radius']` | `'md'` | 圆角规格 |
-| `hiddenIcon` | `boolean` | `false` | 是否隐藏左侧图标 |
-| `closable` | `boolean` | `false` | 是否显示关闭按钮 |
+### 类型定义
 
-</div>
-
-类型展开：
-
-- `color`: `<code>{{ colorTypes }}</code>`
-- `variant`: `<code>{{ variantTypes }}</code>`
-- `radius`: `<code>{{ radiusTypes }}</code>`
+<DocTypeDefs :rows="typeRows" />
 
 ### Slots
 
-<div class="api-table">
-
-| 名称 | 说明 |
-| --- | --- |
-| `default` | 文本内容区域 |
-| `icon` | 左侧图标区域，默认是 `Bell` 图标 |
-
-</div>
+<DocApiTable :columns="slotColumns" :rows="slotRows" />
 
 ### Events
 
-<div class="api-table">
-
-| 名称 | 说明 |
-| --- | --- |
-| 无 | 当前版本未定义 `emits` |
-
-</div>
-
-## 行为说明
-
-- 当 `closable=true` 时，点击关闭按钮后组件从 DOM 移除。
-- 关闭动画使用 `Transition`，动画名为 `AlertClose`。
+<DocApiTable :columns="eventColumns" :rows="eventRows" />

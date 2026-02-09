@@ -19,10 +19,9 @@ defineOptions({ name: 'FLAlert' })
       :class="{
         ['alert_' + props.color + '_' + props.variant]: props.color && props.variant,
         ['alert_radius_' + props.radius]: props.radius,
-        alert_icon_hidden: props.hiddenIcon,
       }"
     >
-      <div class="icon">
+      <div v-if="!props.hiddenIcon" class="icon">
         <slot name="icon"><Bell fill="currentColor" :size="22" /></slot>
       </div>
       <div class="text"><slot /></div>

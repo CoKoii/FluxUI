@@ -1,65 +1,81 @@
-# ConfigProvider 配置提供者
-
 <script setup lang="ts">
-import type { ConfigProviderProps } from '@fluxuijs/core'
+import DocDemo from '../.vitepress/components/DocDemo.vue'
+import DocApiTable from '../.vitepress/components/DocApiTable.vue'
+import ConfigProviderModeDemo from '../.vitepress/demos/config-provider/ConfigProviderModeDemo.vue'
+
+const propColumns = [
+  { key: 'name', label: '名称', code: true },
+  { key: 'type', label: '类型', code: true },
+  { key: 'default', label: '默认值', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const propRows = [
+  { name: 'theme', type: "ConfigProviderProps['theme']", default: 'lightTheme', description: '当前主题对象' },
+  {
+    name: 'prefix',
+    type: 'string',
+    default: 'DEFAULT_PREFIX (--fl)',
+    description: 'CSS 变量名前缀',
+  },
+  {
+    name: 'attribute',
+    type: 'string',
+    default: 'DEFAULT_ATTRIBUTE (fl-data-theme)',
+    description: '写入目标元素的主题属性名',
+  },
+]
+
+const slotColumns = [
+  { key: 'name', label: '名称', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const slotRows = [{ name: 'default', description: '主题容器内部内容' }]
+
+const composableColumns = [
+  { key: 'name', label: '字段', code: true },
+  { key: 'type', label: '类型', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const composableRows = [
+  { name: 'theme', type: 'ComputedRef<Theme>', description: '当前主题对象' },
+  { name: 'mode', type: "ComputedRef<'light' | 'dark'>", description: '当前模式' },
+  { name: 'isDark', type: 'ComputedRef<boolean>', description: '是否暗色模式' },
+  { name: 'toggle', type: '() => void', description: '在 light/dark 间切换' },
+  { name: 'set', type: '(theme: Theme) => void', description: '设置指定主题' },
+]
 </script>
 
-`ConfigProvider` 用于在容器级别应用主题变量，并通过上下文向子组件暴露主题控制能力。
+# ConfigProvider 配置提供者
 
 ## 示例
 
-<ConfigProviderPlayground />
+### 主题切换
+
+<DocDemo>
+  <ConfigProviderModeDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/config-provider/ConfigProviderModeDemo.vue
 
 ## API
 
 ### Props
 
-<div class="api-table">
-
-| 名称 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `theme` | `ConfigProviderProps['theme']` | `lightTheme` | 当前主题对象 |
-| `prefix` | `string` | `DEFAULT_PREFIX` (`--fl`) | CSS 变量名前缀 |
-| `attribute` | `string` | `DEFAULT_ATTRIBUTE` (`fl-data-theme`) | 写入目标元素的主题属性名 |
-
-</div>
+<DocApiTable :columns="propColumns" :rows="propRows" />
 
 ### Slots
 
-<div class="api-table">
+<DocApiTable :columns="slotColumns" :rows="slotRows" />
 
-| 名称 | 说明 |
-| --- | --- |
-| `default` | 主题容器内部内容 |
+### Composable: useTheme
 
-</div>
+<DocApiTable :columns="composableColumns" :rows="composableRows" />
 
-### Composable：`useTheme`
-
-`@fluxuijs/core` 暴露 `useTheme()`，返回值类型为 `ThemeContext`：
-
-<div class="api-table">
-
-| 字段 | 类型 | 说明 |
-| --- | --- | --- |
-| `theme` | `ComputedRef<Theme>` | 当前主题对象 |
-| `mode` | `ComputedRef<'light' \| 'dark'>` | 当前模式 |
-| `isDark` | `ComputedRef<boolean>` | 是否暗色模式 |
-| `toggle` | `() => void` | 在 light/dark 间切换 |
-| `set` | `(theme: Theme) => void` | 设置指定主题 |
-
-</div>
-
-示例：
-
-```vue
-<script setup lang="ts">
+```ts
 import { useTheme } from '@fluxuijs/core'
 
-const { mode, toggle } = useTheme()
-</script>
-
-<template>
-  <button @click="toggle">当前模式：{{ mode }}</button>
-</template>
+const { theme, mode, isDark, toggle, set } = useTheme()
 ```

@@ -1,56 +1,80 @@
-# Button 按钮
-
 <script setup lang="ts">
-import type { ButtonProps } from '@fluxuijs/core'
+import DocDemo from '../.vitepress/components/DocDemo.vue'
+import DocApiTable from '../.vitepress/components/DocApiTable.vue'
+import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
+import ButtonColorDemo from '../.vitepress/demos/button/ButtonColorDemo.vue'
+import ButtonVariantDemo from '../.vitepress/demos/button/ButtonVariantDemo.vue'
 
-const colorTypes = "'primary' | 'secondary' | 'success' | 'danger' | 'warning'"
-const variantTypes = "'solid' | 'bordered' | 'flat' | 'faded' | 'light' | 'ghost' | 'shadow'"
+const propColumns = [
+  { key: 'name', label: '名称', code: true },
+  { key: 'type', label: '类型', code: true },
+  { key: 'default', label: '默认值', code: true },
+  { key: 'description', label: '说明' },
+]
+
+const propRows = [
+  { name: 'color', type: "ButtonProps['color']", default: "'primary'", description: '颜色语义' },
+  { name: 'variant', type: "ButtonProps['variant']", default: "'solid'", description: '展示变体' },
+]
+
+const slotColumns = [
+  { key: 'name', label: '名称' },
+  { key: 'description', label: '说明' },
+]
+
+const slotRows = [{ name: '无', description: '当前版本未定义 slots' }]
+
+const eventColumns = [
+  { key: 'name', label: '名称' },
+  { key: 'description', label: '说明' },
+]
+
+const eventRows = [{ name: '无', description: '当前版本未定义组件事件' }]
+
+const typeRows = [
+  { name: 'ButtonColor', value: "'primary' | 'secondary' | 'success' | 'danger' | 'warning'" },
+  { name: 'ButtonVariant', value: "'solid' | 'bordered' | 'flat' | 'faded' | 'light' | 'ghost' | 'shadow'" },
+]
 </script>
+
+# Button 按钮
 
 ## 示例
 
-<ButtonPlayground />
+::: warning 当前状态
+当前为占位实现，组件固定渲染文本 `Default`。
+:::
+
+### 颜色
+
+<DocDemo>
+  <ButtonColorDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/button/ButtonColorDemo.vue
+
+### 变体
+
+<DocDemo>
+  <ButtonVariantDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/button/ButtonVariantDemo.vue
 
 ## API
 
 ### Props
 
-<div class="api-table">
+<DocApiTable :columns="propColumns" :rows="propRows" />
 
-| 名称 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `color` | `ButtonProps['color']` | `'primary'` | 颜色语义 |
-| `variant` | `ButtonProps['variant']` | `'solid'` | 展示变体 |
+### 类型定义
 
-</div>
-
-类型展开：
-
-- `color`: `<code>{{ colorTypes }}</code>`
-- `variant`: `<code>{{ variantTypes }}</code>`
+<DocTypeDefs :rows="typeRows" />
 
 ### Slots
 
-<div class="api-table">
-
-| 名称 | 说明 |
-| --- | --- |
-| 无 | 当前版本未定义 slots |
-
-</div>
+<DocApiTable :columns="slotColumns" :rows="slotRows" />
 
 ### Events
 
-<div class="api-table">
-
-| 名称 | 说明 |
-| --- | --- |
-| 无 | 当前版本未定义组件事件 |
-
-</div>
-
-## 当前状态说明
-
-- `packages/core/src/components/Button/style.scss` 当前为空。
-- `Button` 组件模板中渲染固定文本 `Default`。
-- 即便传入默认插槽，也不会显示在当前实现中。
+<DocApiTable :columns="eventColumns" :rows="eventRows" />

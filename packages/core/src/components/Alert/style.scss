@@ -4,10 +4,10 @@
 @mixin alert-faded($text,$bg,$border,$icon){color:$text;background-color:$bg;border:var(--fl-border-solid_1) $border;.icon{background-color:$icon;}}
 
 .Alert{width:100%;min-height:64px;padding:var(--fl-padding-812);display:flex;align-items:center;gap:var(--fl-gap-16);border-radius:var(--fl-radius-14);transition:background-color var(--fl-motion-transition-300ease),color var(--fl-motion-transition-300ease),border var(--fl-motion-transition-300ease);user-select:none;
-  &:hover,&:focus-within{.close{opacity:1;transform:rotate(-180deg) scale(1);pointer-events:auto;transition:all var(--fl-motion-transition-300ease);}}
+  &:hover,&:focus-within{.close{opacity:1;}}
   .icon{border-radius:var(--fl-radius-9999);display:flex;align-items:center;justify-content:center;padding:var(--fl-padding-8);transition:background-color var(--fl-motion-transition-300ease),color var(--fl-motion-transition-300ease);}
   .text{padding:var(--fl-padding-140);max-width:100%;font-size:var(--fl-font-size14);font-weight:var(--fl-font-weight600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color var(--fl-motion-transition-300ease);}
-  .close{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:var(--fl-padding-8);background:transparent;border:0;color:inherit;cursor:pointer;transform:scale(0.8);opacity:0;pointer-events:none;}
+  .close{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:var(--fl-padding-8);background:transparent;border:0;color:inherit;cursor:pointer;opacity:0.72;transition:opacity var(--fl-motion-transition-300ease);}
   .close:focus-visible{outline:2px solid currentColor;outline-offset:2px;}
 }
 
@@ -42,4 +42,3 @@
 .alert_danger_faded{@include alert-faded(var(--fl-colors-danger-600),var(--fl-colors-danger-50),var(--fl-colors-danger-200),var(--fl-colors-danger-100));}
 
 @each $name,$val in (none:0, sm:var(--fl-radius-6), md:var(--fl-radius-10), lg:var(--fl-radius-14), full:var(--fl-radius-9999)) { .alert_radius_#{$name}{border-radius:$val;} }
-.alert_icon_hidden{padding:var(--fl-padding-024);.icon{display:none;}}

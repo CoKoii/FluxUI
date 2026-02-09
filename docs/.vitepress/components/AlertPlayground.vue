@@ -19,7 +19,7 @@ const radii: NonNullable<AlertProps['radius']>[] = ['none', 'sm', 'md', 'lg', 'f
   <div class="demo-block">
     <p class="demo-tip">以下示例均为当前组件真实行为，包括可关闭动画与 icon 插槽覆盖。</p>
 
-    <div class="demo-grid demo-grid-2">
+    <div class="demo-grid">
       <section class="demo-panel">
         <h4>颜色（flat）</h4>
         <div class="demo-stack">

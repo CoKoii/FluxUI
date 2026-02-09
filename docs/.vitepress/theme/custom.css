@@ -8,10 +8,10 @@
 
 .demo-block {
   margin: 16px 0 24px;
-  padding: 16px;
+  padding: 14px;
   border: 1px solid var(--flux-doc-border);
   border-radius: var(--flux-doc-radius);
-  background: linear-gradient(180deg, var(--flux-doc-bg-soft), var(--flux-doc-bg-mute));
+  background: var(--flux-doc-bg-soft);
 }
 
 .demo-grid {
@@ -24,10 +24,16 @@
 }
 
 .demo-panel {
-  border: 1px dashed var(--flux-doc-border);
-  border-radius: 10px;
-  padding: 12px;
-  background: var(--vp-c-bg);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.demo-panel + .demo-panel {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--flux-doc-border);
 }
 
 .demo-panel h4 {
@@ -128,6 +134,101 @@
   background: var(--flux-doc-bg-soft);
 }
 
+.doc-demo {
+  margin: 12px 0;
+}
+
+.doc-demo__header {
+  margin-bottom: 8px;
+}
+
+.doc-demo__title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.doc-demo__description {
+  margin: 4px 0 0;
+  color: var(--flux-doc-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.doc-demo__preview {
+  padding: 14px;
+  border: 1px solid var(--flux-doc-border);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+}
+
+.doc-example-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.doc-api-table {
+  margin: 12px 0 20px;
+  overflow-x: auto;
+}
+
+.doc-api-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.doc-api-table th,
+.doc-api-table td {
+  border: 1px solid var(--flux-doc-border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.doc-api-table th {
+  background: var(--flux-doc-bg-soft);
+  font-weight: 600;
+}
+
+.doc-type-list {
+  margin: 8px 0 14px;
+  padding-left: 10px;
+  border-left: 2px solid var(--flux-doc-border);
+}
+
+.doc-type-list__line {
+  margin: 0;
+  padding: 2px 0;
+  font-family: var(--vp-font-family-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.doc-type-list__equal {
+  margin: 0 6px;
+  color: var(--flux-doc-muted);
+}
+
+.doc-type-list__name,
+.doc-type-list__value {
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--vp-c-text-1);
+}
+
+.doc-type-list__value {
+  white-space: normal;
+}
+
 @media (max-width: 768px) {
   .demo-grid-2 {
     grid-template-columns: 1fr;
@@ -135,5 +236,9 @@
 
   .demo-toolbar {
     flex-wrap: wrap;
+  }
+
+  .doc-type-list__equal {
+    margin: 0 4px;
   }
 }

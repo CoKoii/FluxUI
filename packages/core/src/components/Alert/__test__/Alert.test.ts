@@ -34,7 +34,6 @@ describe('Alert', () => {
     const classes = getAlertClasses(wrapper)
     expect(classes).toContain('alert_default_flat')
     expect(classes).toContain('alert_radius_md')
-    expect(classes).not.toContain('alert_icon_hidden')
   })
 
   it('未提供 icon 插槽时渲染默认图标', () => {
@@ -78,14 +77,20 @@ describe('Alert', () => {
     expect(getAlertClasses(wrapper)).toContain(expectedClass)
   })
 
-  it('设置 hiddenIcon=false 时不添加隐藏图标样式类', () => {
+  it('设置 hiddenIcon=false 时渲染左侧图标区域', () => {
     const wrapper = mountAlert({ props: { hiddenIcon: false } })
-    expect(getAlertClasses(wrapper)).not.toContain('alert_icon_hidden')
+    expect(wrapper.find('.icon').exists()).toBe(true)
   })
 
-  it('设置 hiddenIcon=true 时添加隐藏图标样式类', () => {
+  it('设置 hiddenIcon=true 时只隐藏左侧图标区域', () => {
     const wrapper = mountAlert({ props: { hiddenIcon: true } })
-    expect(getAlertClasses(wrapper)).toContain('alert_icon_hidden')
+    expect(wrapper.find('.icon').exists()).toBe(false)
+  })
+
+  it('设置 hiddenIcon=true 且 closable=true 时仍显示关闭按钮', () => {
+    const wrapper = mountAlert({ props: { hiddenIcon: true, closable: true } })
+    expect(wrapper.find('.icon').exists()).toBe(false)
+    expect(wrapper.find('button.close').exists()).toBe(true)
   })
 
   it('不传 closable 时不渲染关闭按钮', () => {
