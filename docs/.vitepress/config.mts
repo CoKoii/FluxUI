@@ -1,6 +1,11 @@
 import { defineConfig } from 'vitepress'
 
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? ''
+const isProjectPages = repoName.length > 0 && !repoName.toLowerCase().endsWith('.github.io')
+const base = isProjectPages ? `/${repoName}/` : '/'
+
 export default defineConfig({
+  base,
   lang: 'zh-CN',
   title: 'FluxUI组件库',
   description: '现代化、工程化的 Vue3 UI 组件库，专注高质量组件与清晰 API 设计',
