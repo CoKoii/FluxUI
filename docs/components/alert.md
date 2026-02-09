@@ -6,6 +6,7 @@ import AlertColorDemo from '../.vitepress/demos/alert/AlertColorDemo.vue'
 import AlertVariantDemo from '../.vitepress/demos/alert/AlertVariantDemo.vue'
 import AlertRadiusDemo from '../.vitepress/demos/alert/AlertRadiusDemo.vue'
 import AlertClosableDemo from '../.vitepress/demos/alert/AlertClosableDemo.vue'
+import AlertCustomIconDemo from '../.vitepress/demos/alert/AlertCustomIconDemo.vue'
 import AlertHiddenIconDemo from '../.vitepress/demos/alert/AlertHiddenIconDemo.vue'
 
 const propColumns = [
@@ -82,6 +83,14 @@ const typeRows = [
 </DocDemo>
 
 <<< ../.vitepress/demos/alert/AlertClosableDemo.vue
+
+### 自定义图标
+
+<DocDemo>
+  <AlertCustomIconDemo />
+</DocDemo>
+
+<<< ../.vitepress/demos/alert/AlertCustomIconDemo.vue
 
 ### 隐藏左侧图标
 

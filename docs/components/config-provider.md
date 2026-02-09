@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DocDemo from '../.vitepress/components/DocDemo.vue'
 import DocApiTable from '../.vitepress/components/DocApiTable.vue'
+import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
 import ConfigProviderModeDemo from '../.vitepress/demos/config-provider/ConfigProviderModeDemo.vue'
 
 const propColumns = [
@@ -26,12 +27,28 @@ const propRows = [
   },
 ]
 
+const typeRows = [
+  { name: 'ConfigProviderProps', value: "ApplyThemeOptions & { theme?: Theme }" },
+  {
+    name: 'ThemeContext',
+    value:
+      '{ theme: ComputedRef<Theme>; mode: ComputedRef<ThemeMode>; isDark: ComputedRef<boolean>; toggle: () => void; set: (theme: Theme) => void }',
+  },
+]
+
 const slotColumns = [
   { key: 'name', label: '名称', code: true },
   { key: 'description', label: '说明' },
 ]
 
 const slotRows = [{ name: 'default', description: '主题容器内部内容' }]
+
+const eventColumns = [
+  { key: 'name', label: '名称' },
+  { key: 'description', label: '说明' },
+]
+
+const eventRows = [{ name: '无', description: '当前版本未定义 emits' }]
 
 const composableColumns = [
   { key: 'name', label: '字段', code: true },
@@ -54,6 +71,8 @@ const composableRows = [
 
 ### 主题切换
 
+该示例不额外改动容器样式，只展示主题色 token 的变化。
+
 <DocDemo>
   <ConfigProviderModeDemo />
 </DocDemo>
@@ -66,9 +85,17 @@ const composableRows = [
 
 <DocApiTable :columns="propColumns" :rows="propRows" />
 
+### 类型定义
+
+<DocTypeDefs :rows="typeRows" />
+
 ### Slots
 
 <DocApiTable :columns="slotColumns" :rows="slotRows" />
+
+### Events
+
+<DocApiTable :columns="eventColumns" :rows="eventRows" />
 
 ### Composable: useTheme
 

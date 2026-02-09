@@ -1,8 +1,8 @@
 {
   "name": "@fluxuijs/docs",
   "scripts": {
-    "dev": "vitepress dev",
-    "docs:dev": "vitepress dev",
+    "dev": "vitepress dev --force",
+    "docs:dev": "vitepress dev --force",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
