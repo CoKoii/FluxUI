@@ -4,7 +4,10 @@ import '@fluxuijs/core/dist/style.css'
 import { applyTheme, darkTheme, lightTheme } from '@fluxuijs/theme'
 import './custom.css'
 
-import TokenTable from '../components/TokenTable.vue'
+import DocApiTable from '../ui/DocApiTable.vue'
+import DocDemo from '../ui/DocDemo.vue'
+import DocTypeDefs from '../ui/DocTypeDefs.vue'
+import TokenTable from '../ui/TokenTable.vue'
 
 const syncDocsThemeByClass = () => {
   if (typeof document === 'undefined')
@@ -37,6 +40,9 @@ const theme: Theme = {
   enhanceApp(ctx) {
     DefaultTheme.enhanceApp?.(ctx)
     syncDocsThemeByClass()
+    ctx.app.component('DocDemo', DocDemo)
+    ctx.app.component('DocApiTable', DocApiTable)
+    ctx.app.component('DocTypeDefs', DocTypeDefs)
     ctx.app.component('TokenTable', TokenTable)
   },
 }

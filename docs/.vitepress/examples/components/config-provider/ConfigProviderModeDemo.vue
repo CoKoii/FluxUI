@@ -8,9 +8,9 @@ const activeTheme = computed(() => (mode.value === 'dark' ? darkTheme : lightThe
 const tokenValues = computed(() => {
   const colors = activeTheme.value.tokens.colors
   return {
-    layoutBackground: colors?.layout?.background ?? '-',
-    layoutForeground: colors?.layout?.foreground ?? '-',
+    default400: colors?.default?.[400] ?? '-',
     primary500: colors?.primary?.[500] ?? '-',
+    success500: colors?.success?.[500] ?? '-',
   }
 })
 
@@ -30,9 +30,9 @@ const toggleMode = () => {
 
     <ConfigProvider :theme="activeTheme">
       <div class="doc-example-stack">
-        <Alert color="default">layout.background: {{ tokenValues.layoutBackground }}</Alert>
-        <Alert color="primary">primary.500: {{ tokenValues.primary500 }}</Alert>
-        <Alert color="success">layout.foreground: {{ tokenValues.layoutForeground }}</Alert>
+        <Alert color="default" variant="solid">default.400: {{ tokenValues.default400 }}</Alert>
+        <Alert color="primary" variant="solid">primary.500: {{ tokenValues.primary500 }}</Alert>
+        <Alert color="success" variant="solid">success.500: {{ tokenValues.success500 }}</Alert>
       </div>
     </ConfigProvider>
   </div>

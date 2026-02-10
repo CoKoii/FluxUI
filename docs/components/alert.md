@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import DocDemo from '../.vitepress/components/DocDemo.vue'
-import DocApiTable from '../.vitepress/components/DocApiTable.vue'
-import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
-import AlertColorDemo from '../.vitepress/demos/alert/AlertColorDemo.vue'
-import AlertVariantDemo from '../.vitepress/demos/alert/AlertVariantDemo.vue'
-import AlertRadiusDemo from '../.vitepress/demos/alert/AlertRadiusDemo.vue'
-import AlertClosableDemo from '../.vitepress/demos/alert/AlertClosableDemo.vue'
-import AlertCustomIconDemo from '../.vitepress/demos/alert/AlertCustomIconDemo.vue'
-import AlertHiddenIconDemo from '../.vitepress/demos/alert/AlertHiddenIconDemo.vue'
+import AlertColorDemo from '../.vitepress/examples/components/alert/AlertColorDemo.vue'
+import AlertVariantDemo from '../.vitepress/examples/components/alert/AlertVariantDemo.vue'
+import AlertRadiusDemo from '../.vitepress/examples/components/alert/AlertRadiusDemo.vue'
+import AlertClosableDemo from '../.vitepress/examples/components/alert/AlertClosableDemo.vue'
+import AlertCustomIconDemo from '../.vitepress/examples/components/alert/AlertCustomIconDemo.vue'
+import AlertHiddenIconDemo from '../.vitepress/examples/components/alert/AlertHiddenIconDemo.vue'
 
 const propColumns = [
   { key: 'name', label: '名称', code: true },
@@ -58,7 +55,7 @@ const typeRows = [
   <AlertColorDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertColorDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertColorDemo.vue
 
 ### 变体
 
@@ -66,7 +63,7 @@ const typeRows = [
   <AlertVariantDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertVariantDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertVariantDemo.vue
 
 ### 圆角
 
@@ -74,7 +71,7 @@ const typeRows = [
   <AlertRadiusDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertRadiusDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertRadiusDemo.vue
 
 ### 可关闭
 
@@ -82,7 +79,7 @@ const typeRows = [
   <AlertClosableDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertClosableDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertClosableDemo.vue
 
 ### 自定义图标
 
@@ -90,7 +87,7 @@ const typeRows = [
   <AlertCustomIconDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertCustomIconDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertCustomIconDemo.vue
 
 ### 隐藏左侧图标
 
@@ -98,7 +95,7 @@ const typeRows = [
   <AlertHiddenIconDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/alert/AlertHiddenIconDemo.vue
+<<< ../.vitepress/examples/components/alert/AlertHiddenIconDemo.vue
 
 ## API
 

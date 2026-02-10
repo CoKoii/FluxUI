@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import DocDemo from '../.vitepress/components/DocDemo.vue'
-import DocApiTable from '../.vitepress/components/DocApiTable.vue'
-import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
-import ButtonColorDemo from '../.vitepress/demos/button/ButtonColorDemo.vue'
-import ButtonVariantDemo from '../.vitepress/demos/button/ButtonVariantDemo.vue'
+import ButtonColorDemo from '../.vitepress/examples/components/button/ButtonColorDemo.vue'
+import ButtonVariantDemo from '../.vitepress/examples/components/button/ButtonVariantDemo.vue'
 
 const propColumns = [
   { key: 'name', label: '名称', code: true },
@@ -51,7 +48,7 @@ const typeRows = [
   <ButtonColorDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/button/ButtonColorDemo.vue
+<<< ../.vitepress/examples/components/button/ButtonColorDemo.vue
 
 ### 变体
 
@@ -59,7 +56,7 @@ const typeRows = [
   <ButtonVariantDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/button/ButtonVariantDemo.vue
+<<< ../.vitepress/examples/components/button/ButtonVariantDemo.vue
 
 ## API
 

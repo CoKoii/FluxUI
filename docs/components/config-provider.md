@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import DocDemo from '../.vitepress/components/DocDemo.vue'
-import DocApiTable from '../.vitepress/components/DocApiTable.vue'
-import DocTypeDefs from '../.vitepress/components/DocTypeDefs.vue'
-import ConfigProviderModeDemo from '../.vitepress/demos/config-provider/ConfigProviderModeDemo.vue'
+import ConfigProviderModeDemo from '../.vitepress/examples/components/config-provider/ConfigProviderModeDemo.vue'
 
 const propColumns = [
   { key: 'name', label: '名称', code: true },
@@ -77,7 +74,7 @@ const composableRows = [
   <ConfigProviderModeDemo />
 </DocDemo>
 
-<<< ../.vitepress/demos/config-provider/ConfigProviderModeDemo.vue
+<<< ../.vitepress/examples/components/config-provider/ConfigProviderModeDemo.vue
 
 ## API
 
