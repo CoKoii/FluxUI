@@ -35,6 +35,9 @@ importers:
       '@fluxuijs/theme':
         specifier: workspace:*
         version: link:../packages/theme
+      lucide-vue-next:
+        specifier: ^0.555.0
+        version: 0.555.0(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       vitepress:
         specifier: 2.0.0-alpha.15

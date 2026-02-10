@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Alert } from '@fluxuijs/core'
 import type { AlertProps } from '@fluxuijs/core'
+import { Sparkles } from 'lucide-vue-next'
 
 const colors: NonNullable<AlertProps['color']>[] = [
   'default',
@@ -51,7 +52,7 @@ const radii: NonNullable<AlertProps['radius']>[] = ['none', 'sm', 'md', 'lg', 'f
           </Alert>
           <Alert color="warning" variant="bordered" closable>
             <template #icon>
-              <span style="font-size: 18px">⚡</span>
+              <Sparkles />
             </template>
             自定义 icon 插槽示例。
           </Alert>

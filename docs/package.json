@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@fluxuijs/core": "workspace:*",
-    "@fluxuijs/theme": "workspace:*"
+    "@fluxuijs/theme": "workspace:*",
+    "lucide-vue-next": "^0.555.0"
   },
   "devDependencies": {
     "vitepress": "2.0.0-alpha.15"
