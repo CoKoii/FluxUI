@@ -30,9 +30,9 @@ const toggleMode = () => {
 
     <ConfigProvider :theme="activeTheme">
       <div class="doc-example-stack">
-        <Alert color="default" variant="solid">default.400: {{ tokenValues.default400 }}</Alert>
-        <Alert color="primary" variant="solid">primary.500: {{ tokenValues.primary500 }}</Alert>
-        <Alert color="success" variant="solid">success.500: {{ tokenValues.success500 }}</Alert>
+        <Alert color="default" variant="solid">default400: {{ tokenValues.default400 }}</Alert>
+        <Alert color="primary" variant="solid">primary500: {{ tokenValues.primary500 }}</Alert>
+        <Alert color="success" variant="solid">success500: {{ tokenValues.success500 }}</Alert>
       </div>
     </ConfigProvider>
   </div>

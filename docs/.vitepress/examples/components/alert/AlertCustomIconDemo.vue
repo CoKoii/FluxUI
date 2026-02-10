@@ -9,14 +9,14 @@ import { BadgeCheck, TriangleAlert } from 'lucide-vue-next'
       <template #icon>
         <BadgeCheck />
       </template>
-      审核已通过，配置可以发布。
+      审核已通过，配置可以发布
     </Alert>
 
     <Alert color="warning" variant="bordered">
       <template #icon>
         <TriangleAlert />
       </template>
-      当前策略即将过期，请尽快更新。
+      当前策略即将过期，请尽快更新
     </Alert>
   </div>
 </template>

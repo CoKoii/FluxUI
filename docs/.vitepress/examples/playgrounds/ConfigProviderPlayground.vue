@@ -22,7 +22,7 @@ const toggleMode = () => {
 
     <ConfigProvider :theme="activeTheme">
       <div class="theme-preview">
-        <Alert color="primary" variant="flat">ConfigProvider 已将主题变量注入到当前容器。</Alert>
+        <Alert color="primary" variant="flat">ConfigProvider 已将主题变量注入到当前容器</Alert>
 
         <div class="theme-grid">
           <div class="theme-card">

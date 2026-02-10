@@ -68,8 +68,6 @@ const composableRows = [
 
 ### 主题切换
 
-该示例不额外改动容器样式，只展示主题色 token 的变化。
-
 <DocDemo>
   <ConfigProviderModeDemo />
 </DocDemo>
@@ -99,7 +97,7 @@ const composableRows = [
 <DocApiTable :columns="composableColumns" :rows="composableRows" />
 
 ```ts
-import { useTheme } from '@fluxuijs/core'
+import { useTheme } from "@fluxuijs/core";
 
-const { theme, mode, isDark, toggle, set } = useTheme()
+const { theme, mode, isDark, toggle, set } = useTheme();
 ```

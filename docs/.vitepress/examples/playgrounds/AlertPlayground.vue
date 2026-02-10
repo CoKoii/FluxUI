@@ -48,15 +48,15 @@ const radii: NonNullable<AlertProps['radius']>[] = ['none', 'sm', 'md', 'lg', 'f
         <h4>可关闭 + 自定义图标</h4>
         <div class="demo-stack">
           <Alert color="success" variant="flat" closable>
-            点击右侧关闭按钮后组件会移除。
+            点击右侧关闭按钮后组件会移除
           </Alert>
           <Alert color="warning" variant="bordered" closable>
             <template #icon>
               <Sparkles />
             </template>
-            自定义 icon 插槽示例。
+            自定义 icon 插槽示例
           </Alert>
-          <Alert color="danger" variant="faded" hiddenIcon>hiddenIcon=true 时图标隐藏。</Alert>
+          <Alert color="danger" variant="faded" hiddenIcon>hiddenIcon=true 时图标隐藏</Alert>
         </div>
       </section>
     </div>
